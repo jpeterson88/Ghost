@@ -1,0 +1,23 @@
+ghost-model.png
+size:654,454
+filter:Linear,Linear
+pma:true
+Body
+bounds:2,2,450,575
+rotate:90
+Happy Mouth
+bounds:579,249,31,10
+Layer 3
+bounds:579,228,11,19
+offsets:1,1,13,21
+Layer 4
+bounds:612,249,10,18
+offsets:1,1,12,21
+rotate:90
+Left Arm
+bounds:579,357,95,73
+rotate:90
+Right Arm
+bounds:579,261,94,73
+offsets:1,0,95,73
+rotate:90
