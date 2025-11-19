@@ -8,16 +8,30 @@ namespace Assets.Scripts.State.StateHandlers
 {
     class LocomotionStateHandler : StateHandlerBase
     {
-        [SerializeField] private PlayerStates nextState;
+        [SerializeField] private PlayerStates idleState, spook1State;
         [SerializeField] private Rigidbody2D rb2d;
         [SerializeField] private AnimationReferenceAsset right, left, upward, downward;
         [SerializeField] private SpineSkeletonAnimationHandle animationHandler;
         [SerializeField] private float stopMagnitude = 1.5f;
 
         private TrackEntry recentTrack;
+
         internal override void OnEnter(int state)
         {
             base.OnEnter(state);
+        }
+
+        internal override void OnUpdate()
+        {
+            base.OnUpdate();
+
+            if (IsInCurrentHandlerState())
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    SetState(spook1State);
+                }
+            }
         }
 
         internal override void OnFixedUpdate()
@@ -25,21 +39,17 @@ namespace Assets.Scripts.State.StateHandlers
             base.OnFixedUpdate();
 
 
-            PlayAnimationBasedOnDirection();
-
-            if (IsInCurrentHandlerState() && rb2d.linearVelocity.magnitude < stopMagnitude)
-                SetState(nextState);
+            if (IsInCurrentHandlerState())
+            {
+                PlayAnimationBasedOnDirection();
+                if (rb2d.linearVelocity.magnitude < stopMagnitude)
+                    SetState(idleState);
+            }                
         }
 
         private void PlayAnimationBasedOnDirection()
         {
-            Direction direction = GetMoveDirection(GetInputVector());
-            
-
-            var trackPlaying = animationHandler.GetCurrentTrack(1);
-
-            if(trackPlaying != null)
-                Debug.Log(trackPlaying.ToString());
+            Direction direction = GetMoveDirection(GetInputVector());            
 
             if (!animationHandler.CompareTrackName(1, upward.name) && direction == Direction.Up)
             {

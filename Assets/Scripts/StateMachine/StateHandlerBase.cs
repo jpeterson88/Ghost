@@ -18,6 +18,8 @@ namespace Assets.Scripts.StateMachine
 
             if (stateMachine == null)
                 throw new NullReferenceException(nameof(stateMachine));
+            if(canHandleStates.Length == 0)
+                throw new Exception("No canHandleStates found.");
         }
 
         internal bool CanHandle(int desiredState)

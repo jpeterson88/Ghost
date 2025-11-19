@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: spine-unity::Spine.Unity.SkeletonAnimation
   skeletonDataAsset: {fileID: 11400000, guid: 6432842f4c8aab244a9b82a823ae96d1, type: 2}
-  initialSkinName: 
+  initialSkinName: normal
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
   initialFlipY: 0
@@ -311,7 +311,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.State.StateHandlers.IdleStateHandler
   canHandleStates: 00000000
-  nextState: 1
+  locomotionState: 1
+  spook1State: 2
   rb2d: {fileID: 1181280252}
   idle: {fileID: 11400000, guid: 080b80b78f02ed149a518b02a475c183, type: 2}
   animationHandler: {fileID: 7121687}
@@ -515,8 +516,8 @@ MonoBehaviour:
   IgnoreTimeScale: 0
   WorldUpOverride: {fileID: 0}
   ChannelMask: -1
-  UpdateMethod: 0
-  BlendUpdateMethod: 0
+  UpdateMethod: 1
+  BlendUpdateMethod: 1
   LensModeOverride:
     Enabled: 0
     DefaultMode: 2
@@ -530,6 +531,57 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!1 &823951540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 823951541}
+  - component: {fileID: 823951542}
+  m_Layer: 0
+  m_Name: Spook State Handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &823951541
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823951540}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 912034854}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &823951542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823951540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dbb041c5410be948b34bacc6894836f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.State.StateHandlers.SpookStateHandler
+  canHandleStates: 02000000
+  nextState: 0
+  rb2d: {fileID: 1181280252}
+  spook1Anim: {fileID: 11400000, guid: fbc90c478bcf3f949ac81dddf5eee7f5, type: 2}
+  animationHandler: {fileID: 7121687}
+  spookSkinName: spook-1
+  normalSkinName: normal
 --- !u!1 &845977558
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,7 +705,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.State.StateHandlers.LocomotionStateHandler
   canHandleStates: 01000000
-  nextState: 0
+  idleState: 0
+  spook1State: 2
   rb2d: {fileID: 1181280252}
   right: {fileID: 11400000, guid: dbed449e8f20eff4190ad818a2111d91, type: 2}
   left: {fileID: 11400000, guid: dfb3b88834a0f9147a1d542945fb5972, type: 2}
@@ -693,6 +746,7 @@ Transform:
   m_Children:
   - {fileID: 450302485}
   - {fileID: 860219869}
+  - {fileID: 823951541}
   m_Father: {fileID: 1181280250}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &912034855
@@ -913,7 +967,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
