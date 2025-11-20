@@ -1,3 +1,4 @@
+using Assets.Scripts.Audio;
 using Assets.Scripts.StateMachine;
 using Assets.Scripts.StateMachine.Enums;
 using Spine;
@@ -13,6 +14,9 @@ namespace Assets.Scripts.State.StateHandlers
 		[SerializeField] private AnimationReferenceAsset spook1Anim;
 		[SerializeField] private SpineSkeletonAnimationHandle animationHandler;
 		[SerializeField] private string spookSkinName, normalSkinName;
+		[SerializeField] private CachedAudioController audioController;
+		[SerializeField] private float playSpeed = 1f;
+
 		TrackEntry currentTrack;
 
 		internal override void OnEnter(int state)
@@ -22,8 +26,9 @@ namespace Assets.Scripts.State.StateHandlers
             // Stop player moving
             rb2d.linearVelocity = Vector2.zero;
 
+			audioController.PlayOneShot();
             SetSkin(spookSkinName);
-            currentTrack = animationHandler.PlayAnimationReference(spook1Anim, 0, false, false);
+            currentTrack = animationHandler.PlayAnimationReference(spook1Anim, 0, false, false, playSpeed);
 		}
 
 		private void SetSkin(string skinname)

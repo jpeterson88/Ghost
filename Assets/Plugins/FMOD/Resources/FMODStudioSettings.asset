@@ -478,9 +478,9 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
+  - Character SFX
   - Environment
   - Music
-  - SFX
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
