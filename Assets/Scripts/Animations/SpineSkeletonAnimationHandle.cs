@@ -1,3 +1,4 @@
+using Assets.Scripts.Utility;
 using Spine;
 using Spine.Unity;
 using UnityEngine;
@@ -58,11 +59,16 @@ public class SpineSkeletonAnimationHandle : MonoBehaviour
 
     }
 
-    public void SetFlip(float horizontal)
+    public void SetFacingDirection(FacingDirectionEnum facingDirection)
     {
-        if (horizontal != 0)
+        if(facingDirection == FacingDirectionEnum.Left && skeletonAnimation.Skeleton.ScaleX == 1)
         {
-            skeletonAnimation.Skeleton.ScaleX = horizontal > 0 ? 1f : -1f;
+            skeletonAnimation.Skeleton.ScaleX = -1;
         }
+        else if (facingDirection == FacingDirectionEnum.Right && skeletonAnimation.Skeleton.ScaleX != 1)
+        {
+            skeletonAnimation.Skeleton.ScaleX = 1;
+        }
+            
     }
 }

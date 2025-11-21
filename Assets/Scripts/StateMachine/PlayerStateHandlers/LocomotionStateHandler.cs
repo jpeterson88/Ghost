@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.StateMachine;
 using Assets.Scripts.StateMachine.Enums;
+using Assets.Scripts.Utility;
 using Spine;
 using Spine.Unity;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace Assets.Scripts.State.StateHandlers
         [SerializeField] private AnimationReferenceAsset right, left, upward, downward;
         [SerializeField] private SpineSkeletonAnimationHandle animationHandler;
         [SerializeField] private float stopMagnitude = 1.5f;
+        [SerializeField] private FacingDirection directionUtility;
 
         private TrackEntry recentTrack;
 
@@ -57,10 +59,12 @@ namespace Assets.Scripts.State.StateHandlers
             }
             else if (!animationHandler.CompareTrackName(1, right.name) && (direction == Direction.Right || direction == Direction.UpRight || direction == Direction.DownRight))
             {
+                directionUtility.SetFacingDirection(FacingDirectionEnum.Right);
                 recentTrack = animationHandler.PlayAnimationReference(right, 1, false, true);
             }
             else if (!animationHandler.CompareTrackName(1, left.name) && (direction == Direction.Left || direction == Direction.UpLeft || direction == Direction.DownLeft))
             {
+                directionUtility.SetFacingDirection(FacingDirectionEnum.Left);
                 recentTrack = animationHandler.PlayAnimationReference(left, 1, false, true);
             }
             else if(!animationHandler.CompareTrackName(1, downward.name) && direction == Direction.Down)

@@ -367,8 +367,10 @@ MonoBehaviour:
   locomotionState: 1
   spook1State: 2
   rb2d: {fileID: 1181280252}
-  idle: {fileID: 11400000, guid: 080b80b78f02ed149a518b02a475c183, type: 2}
+  idleLeft: {fileID: 11400000, guid: 91e5fad5a391eca4a9bbd638e5b1c306, type: 2}
+  idleRight: {fileID: 11400000, guid: 4c5b8fa60dd2aa54799d004bcd99b0e9, type: 2}
   animationHandler: {fileID: 7121687}
+  facingDirection: {fileID: 2034678476}
 --- !u!1 &513765334
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,6 +602,7 @@ GameObject:
   m_Component:
   - component: {fileID: 823951541}
   - component: {fileID: 823951542}
+  - component: {fileID: 823951543}
   m_Layer: 0
   m_Name: Spook State Handler
   m_TagString: Untagged
@@ -642,7 +645,39 @@ MonoBehaviour:
   spookSkinName: spook-1
   normalSkinName: normal
   audioController: {fileID: 922065859}
+  bringDownEmitter: {fileID: 823951543}
   playSpeed: 0.5
+--- !u!114 &823951543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823951540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 265266845
+      Data2: 1224186277
+      Data3: -1450108483
+      Data4: 44105323
+    Path: snapshot:/bring-down
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &845977558
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,6 +810,7 @@ MonoBehaviour:
   downward: {fileID: 11400000, guid: 07de31838dc54084b9caf422be5763f5, type: 2}
   animationHandler: {fileID: 7121687}
   stopMagnitude: 3
+  directionUtility: {fileID: 2034678476}
 --- !u!1 &912034853
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,7 +861,7 @@ MonoBehaviour:
   allowedRepeatStates: 01000000
   setStateOnFirstFrameUpdate: 1
   startingState: 0
-  enableLogs: 1
+  enableLogs: 0
 --- !u!1 &922065857
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,6 +1002,7 @@ Transform:
   - {fileID: 7121683}
   - {fileID: 2102742751}
   - {fileID: 912034854}
+  - {fileID: 2034678475}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1181280251
@@ -1194,6 +1231,51 @@ Transform:
   - {fileID: 845977559}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2034678474
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2034678475}
+  - component: {fileID: 2034678476}
+  m_Layer: 0
+  m_Name: Facing Direction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2034678475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034678474}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1181280250}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2034678476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034678474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367dbc946e14f3749a92c0551dd05f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Utility.FacingDirection
+  startFacingLeft: 0
 --- !u!1 &2102742750
 GameObject:
   m_ObjectHideFlags: 0

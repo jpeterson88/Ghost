@@ -1,6 +1,7 @@
 using Assets.Scripts.Audio;
 using Assets.Scripts.StateMachine;
 using Assets.Scripts.StateMachine.Enums;
+using FMODUnity;
 using Spine;
 using Spine.Unity;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace Assets.Scripts.State.StateHandlers
 		[SerializeField] private SpineSkeletonAnimationHandle animationHandler;
 		[SerializeField] private string spookSkinName, normalSkinName;
 		[SerializeField] private CachedAudioController audioController;
+		[SerializeField] private StudioEventEmitter bringDownEmitter;
 		[SerializeField] private float playSpeed = 1f;
 
 		TrackEntry currentTrack;
@@ -26,7 +28,9 @@ namespace Assets.Scripts.State.StateHandlers
             // Stop player moving
             rb2d.linearVelocity = Vector2.zero;
 
-			audioController.PlayOneShot();
+			bringDownEmitter.Play();
+
+            audioController.PlayOneShot();
             SetSkin(spookSkinName);
             currentTrack = animationHandler.PlayAnimationReference(spook1Anim, 0, false, false, playSpeed);
 		}
@@ -47,6 +51,7 @@ namespace Assets.Scripts.State.StateHandlers
 		internal override void OnExit()
 		{
 			base.OnExit();
+            bringDownEmitter.Stop();
             currentTrack = null;
             SetSkin(normalSkinName);
         }

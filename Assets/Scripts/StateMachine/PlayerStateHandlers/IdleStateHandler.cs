@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.StateMachine;
 using Assets.Scripts.StateMachine.Enums;
+using Assets.Scripts.Utility;
 using Spine.Unity;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 
 namespace Assets.Scripts.State.StateHandlers
@@ -10,12 +10,21 @@ namespace Assets.Scripts.State.StateHandlers
     {
         [SerializeField] private PlayerStates locomotionState, spook1State;
         [SerializeField] private Rigidbody2D rb2d;
-        [SerializeField] private AnimationReferenceAsset idle;
+        [SerializeField] private AnimationReferenceAsset idleLeft, idleRight;
         [SerializeField] private SpineSkeletonAnimationHandle animationHandler;
+        [SerializeField] private FacingDirection facingDirection;
         internal override void OnEnter(int state)
         {
             base.OnEnter(state);
-            animationHandler.PlayAnimationReference(idle, 0, true, false);
+
+            var currentFacing = facingDirection.GetCurrentFacing();
+
+            Debug.Log($"Facing on enter {currentFacing}");
+            
+            if(currentFacing == FacingDirectionEnum.Left)
+                animationHandler.PlayAnimationReference(idleLeft, 0, false, true);
+            else
+                animationHandler.PlayAnimationReference(idleRight, 0, false, true);
         }
 
         internal override void OnUpdate()
@@ -37,8 +46,12 @@ namespace Assets.Scripts.State.StateHandlers
 
             if (IsInCurrentHandlerState()) 
             {
-                if (rb2d.linearVelocity != Vector2.zero)
+                float inputX = Input.GetAxisRaw("Horizontal");
+                float inputY = Input.GetAxisRaw("Vertical");
+
+                if (inputX != 0 || inputY != 0)
                 {
+                    
                     SetState(locomotionState);
                 }
             }                
