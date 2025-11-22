@@ -42,7 +42,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Environment.bank
   Name: Environment
   StudioPath: bank:/Environment
-  lastModified: 638992522813318471
+  lastModified: 638994140187083634
   FileSizes:
   - Name: Desktop
     Value: 1156320
@@ -89,7 +89,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638992522812997221
+  lastModified: 638994140186751842
   FileSizes:
   - Name: Desktop
     Value: 804960
@@ -109,10 +109,10 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Character SFX.bank
   Name: Character SFX
   StudioPath: bank:/Character SFX
-  lastModified: 638992522813508555
+  lastModified: 638994140187290394
   FileSizes:
   - Name: Desktop
-    Value: 93600
+    Value: 210880
   Exists: 1
 --- !u!114 &-3882742410177109216
 MonoBehaviour:
@@ -156,10 +156,10 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638992522812767056
+  lastModified: 638994140186471732
   FileSizes:
   - Name: Desktop
-    Value: 1186
+    Value: 1236
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -184,13 +184,41 @@ MonoBehaviour:
   - {fileID: -7128726621758503428}
   - {fileID: 2127295826611444562}
   - {fileID: -8191434212767962369}
+  - {fileID: 1666999791229151387}
   EditorParameters: []
   MasterBanks:
   - {fileID: 2625838092753379136}
   StringsBanks:
   - {fileID: -1758736953036213874}
-  cacheTime: 638992522813508555
+  cacheTime: 638994140187290394
   cacheVersion: 131634
+--- !u!114 &1666999791229151387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ghost/movement
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Ghost/movement
+  Guid:
+    Data1: -348222584
+    Data2: 1336707613
+    Data3: -1676811086
+    Data4: -1783602470
+  Banks:
+  - {fileID: -4896890727854552552}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 9400
 --- !u!114 &2127295826611444562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,7 +261,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638992522812757056
+  lastModified: 638994140186461760
   FileSizes:
   - Name: Desktop
     Value: 2172

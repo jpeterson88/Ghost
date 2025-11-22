@@ -1,9 +1,11 @@
 using Assets.Scripts.Audio;
 using Assets.Scripts.StateMachine;
 using Assets.Scripts.StateMachine.Enums;
+using Assets.Scripts.Utility;
 using FMODUnity;
 using Spine;
 using Spine.Unity;
+using Unity.Cinemachine;
 using UnityEngine;
 
 namespace Assets.Scripts.State.StateHandlers
@@ -17,6 +19,10 @@ namespace Assets.Scripts.State.StateHandlers
 		[SerializeField] private string spookSkinName, normalSkinName;
 		[SerializeField] private CachedAudioController audioController;
 		[SerializeField] private StudioEventEmitter bringDownEmitter;
+
+		//TODO Camera direct reference should be switched out to an event based scriptable
+		[SerializeField] private CameraPriorityUtility cameraPriorityUtility;
+		[SerializeField] private CinemachineCamera closeUpCamera, mainCamera;
 		[SerializeField] private float playSpeed = 1f;
 
 		TrackEntry currentTrack;
@@ -29,7 +35,7 @@ namespace Assets.Scripts.State.StateHandlers
             rb2d.linearVelocity = Vector2.zero;
 
 			bringDownEmitter.Play();
-
+			cameraPriorityUtility.SwitchCameras(closeUpCamera);
             audioController.PlayOneShot();
             SetSkin(spookSkinName);
             currentTrack = animationHandler.PlayAnimationReference(spook1Anim, 0, false, false, playSpeed);
@@ -51,6 +57,7 @@ namespace Assets.Scripts.State.StateHandlers
 		internal override void OnExit()
 		{
 			base.OnExit();
+            cameraPriorityUtility.SwitchCameras(mainCamera);
             bringDownEmitter.Stop();
             currentTrack = null;
             SetSkin(normalSkinName);

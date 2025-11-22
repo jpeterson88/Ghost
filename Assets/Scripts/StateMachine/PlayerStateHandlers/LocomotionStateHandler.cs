@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.StateMachine;
+﻿using Assets.Scripts.Audio;
+using Assets.Scripts.StateMachine;
 using Assets.Scripts.StateMachine.Enums;
 using Assets.Scripts.Utility;
 using Spine;
@@ -15,12 +16,14 @@ namespace Assets.Scripts.State.StateHandlers
         [SerializeField] private SpineSkeletonAnimationHandle animationHandler;
         [SerializeField] private float stopMagnitude = 1.5f;
         [SerializeField] private FacingDirection directionUtility;
+        [SerializeField] private UncachedAudioController audioController;
 
         private TrackEntry recentTrack;
 
         internal override void OnEnter(int state)
         {
             base.OnEnter(state);
+            audioController.Play();
         }
 
         internal override void OnUpdate()
@@ -124,6 +127,7 @@ namespace Assets.Scripts.State.StateHandlers
         {
             base.OnExit();
             animationHandler.ClearTrack(1);
+            audioController.Stop(true);
         }
     }
 }

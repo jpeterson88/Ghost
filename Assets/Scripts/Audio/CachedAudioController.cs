@@ -52,6 +52,13 @@ namespace Assets.Scripts.Audio
             instance.setParameterByName(name, value);
         }
 
+
+        void OnDestroy()
+        {
+            // Ensure the event instance is released when the GameObject is destroyed
+            instance.release();
+        }
+
         public float GetParamValue() => currentParamValue;
     }
 }
