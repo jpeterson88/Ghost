@@ -1,7 +1,9 @@
-﻿using Assets.Scripts.StateMachine;
+﻿using Assets.Scripts.Ghost;
+using Assets.Scripts.StateMachine;
 using Assets.Scripts.StateMachine.Enums;
 using Assets.Scripts.Utility;
 using Spine.Unity;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.State.StateHandlers
@@ -13,6 +15,7 @@ namespace Assets.Scripts.State.StateHandlers
         [SerializeField] private AnimationReferenceAsset idleLeft, idleRight;
         [SerializeField] private SpineSkeletonAnimationHandle animationHandler;
         [SerializeField] private FacingDirection facingDirection;
+
         internal override void OnEnter(int state)
         {
             base.OnEnter(state);

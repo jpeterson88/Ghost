@@ -85,6 +85,8 @@ namespace Assets.Scripts.State.StateHandlers
             return input;
         }
 
+
+
         private Direction GetMoveDirection(Vector2 input)
         {
             if (input == Vector2.zero)

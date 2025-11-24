@@ -1,4 +1,5 @@
 using Assets.Scripts.Audio;
+using Assets.Scripts.Ghost;
 using Assets.Scripts.StateMachine;
 using Assets.Scripts.StateMachine.Enums;
 using Assets.Scripts.Utility;
@@ -6,6 +7,7 @@ using FMODUnity;
 using Spine;
 using Spine.Unity;
 using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.State.StateHandlers
@@ -19,7 +21,7 @@ namespace Assets.Scripts.State.StateHandlers
 		[SerializeField] private string spookSkinName, normalSkinName;
 		[SerializeField] private CachedAudioController audioController;
 		[SerializeField] private StudioEventEmitter bringDownEmitter;
-
+		[SerializeField] private FadeUtility fadeUtility;
 		//TODO Camera direct reference should be switched out to an event based scriptable
 		[SerializeField] private CameraPriorityUtility cameraPriorityUtility;
 		[SerializeField] private CinemachineCamera closeUpCamera, mainCamera;
@@ -34,7 +36,9 @@ namespace Assets.Scripts.State.StateHandlers
             // Stop player moving
             rb2d.linearVelocity = Vector2.zero;
 
-			bringDownEmitter.Play();
+			fadeUtility.ReappearImage();
+
+            bringDownEmitter.Play();
 			cameraPriorityUtility.SwitchCameras(closeUpCamera);
             audioController.PlayOneShot();
             SetSkin(spookSkinName);

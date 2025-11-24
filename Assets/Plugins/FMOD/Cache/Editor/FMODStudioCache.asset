@@ -42,7 +42,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Environment.bank
   Name: Environment
   StudioPath: bank:/Environment
-  lastModified: 638994140187083634
+  lastModified: 638994178468868897
   FileSizes:
   - Name: Desktop
     Value: 1156320
@@ -89,7 +89,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638994140186751842
+  lastModified: 638994178468555435
   FileSizes:
   - Name: Desktop
     Value: 804960
@@ -109,7 +109,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Character SFX.bank
   Name: Character SFX
   StudioPath: bank:/Character SFX
-  lastModified: 638994140187290394
+  lastModified: 638994178469079767
   FileSizes:
   - Name: Desktop
     Value: 210880
@@ -156,7 +156,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638994140186471732
+  lastModified: 638994178468244679
   FileSizes:
   - Name: Desktop
     Value: 1236
@@ -190,7 +190,7 @@ MonoBehaviour:
   - {fileID: 2625838092753379136}
   StringsBanks:
   - {fileID: -1758736953036213874}
-  cacheTime: 638994140187290394
+  cacheTime: 638994178469079767
   cacheVersion: 131634
 --- !u!114 &1666999791229151387
 MonoBehaviour:
@@ -261,7 +261,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638994140186461760
+  lastModified: 638994178468214669
   FileSizes:
   - Name: Desktop
     Value: 2172
