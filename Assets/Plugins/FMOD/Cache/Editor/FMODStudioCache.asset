@@ -42,7 +42,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Environment.bank
   Name: Environment
   StudioPath: bank:/Environment
-  lastModified: 638994178468868897
+  lastModified: 638996773870512774
   FileSizes:
   - Name: Desktop
     Value: 1156320
@@ -89,7 +89,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638994178468555435
+  lastModified: 638996773870763407
   FileSizes:
   - Name: Desktop
     Value: 804960
@@ -109,10 +109,10 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Character SFX.bank
   Name: Character SFX
   StudioPath: bank:/Character SFX
-  lastModified: 638994178469079767
+  lastModified: 638996773870301824
   FileSizes:
   - Name: Desktop
-    Value: 210880
+    Value: 290432
   Exists: 1
 --- !u!114 &-3882742410177109216
 MonoBehaviour:
@@ -156,11 +156,38 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638994178468244679
+  lastModified: 638996773870557991
   FileSizes:
   - Name: Desktop
-    Value: 1236
+    Value: 1322
   Exists: 1
+--- !u!114 &-40012422467730330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ghost/poof
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Ghost/poof
+  Guid:
+    Data1: -1509408537
+    Data2: 1161476583
+    Data3: 731768994
+    Data4: -1906424823
+  Banks:
+  - {fileID: -4896890727854552552}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1175
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,12 +212,14 @@ MonoBehaviour:
   - {fileID: 2127295826611444562}
   - {fileID: -8191434212767962369}
   - {fileID: 1666999791229151387}
+  - {fileID: 6453247447897130571}
+  - {fileID: -40012422467730330}
   EditorParameters: []
   MasterBanks:
   - {fileID: 2625838092753379136}
   StringsBanks:
   - {fileID: -1758736953036213874}
-  cacheTime: 638994178469079767
+  cacheTime: 638996773870763407
   cacheVersion: 131634
 --- !u!114 &1666999791229151387
 MonoBehaviour:
@@ -261,8 +290,35 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638994178468214669
+  lastModified: 638996773870537903
   FileSizes:
   - Name: Desktop
     Value: 2172
   Exists: 1
+--- !u!114 &6453247447897130571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/spotted
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Music/spotted
+  Guid:
+    Data1: 654582689
+    Data2: 1313821153
+    Data3: 604798353
+    Data4: -1003629860
+  Banks:
+  - {fileID: -4896890727854552552}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 5560

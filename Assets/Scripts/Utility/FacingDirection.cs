@@ -6,7 +6,7 @@ namespace Assets.Scripts.Utility
     public class FacingDirection: MonoBehaviour
     {
         [SerializeField] private bool startFacingLeft;
-
+        [SerializeField] private bool enableDebug;
         private FacingDirectionEnum currentFacing;
 
         private void Awake()
@@ -23,6 +23,9 @@ namespace Assets.Scripts.Utility
         public FacingDirectionEnum FlipFacing()
         {
             currentFacing = currentFacing == FacingDirectionEnum.Right ? FacingDirectionEnum.Left : FacingDirectionEnum.Right;
+
+            if (enableDebug)
+                Debug.Log($"New facingDirection: ${currentFacing}");
             return currentFacing;
         }
 
@@ -40,6 +43,9 @@ namespace Assets.Scripts.Utility
                 flipped = true;
                 currentFacing = FacingDirectionEnum.Left;
             }
+
+            if (enableDebug)
+                Debug.Log($"New facingDirection: ${currentFacing}. Wasflipped: ${flipped}");
 
             return flipped;
         }

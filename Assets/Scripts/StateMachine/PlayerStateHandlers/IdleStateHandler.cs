@@ -21,8 +21,6 @@ namespace Assets.Scripts.State.StateHandlers
             base.OnEnter(state);
 
             var currentFacing = facingDirection.GetCurrentFacing();
-
-            Debug.Log($"Facing on enter {currentFacing}");
             
             if(currentFacing == FacingDirectionEnum.Left)
                 animationHandler.PlayAnimationReference(idleLeft, 0, false, true);

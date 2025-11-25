@@ -1,10 +1,8 @@
-﻿using Assets.Scripts.StateMachine;
+﻿using Assets.Scripts.Data.Scriptables;
+using Assets.Scripts.StateMachine;
 using Assets.Scripts.StateMachine.Enums;
-using NUnit.Framework;
-using Spine;
 using Spine.Unity;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.Ghost
@@ -15,7 +13,8 @@ namespace Assets.Scripts.Ghost
         [SerializeField] private SkeletonAnimation skeletonAnim;
         [SerializeField] private float fadeInDuration, fadeOutDuration, timeAllowedTillNextFade;
         [SerializeField] private PlayerStateMachine stateMachine;
-        [SerializeField] private PlayerStates[] fadeableStates;
+        [SerializeField] private PlayerStates[] fadeableStates;        
+        [SerializeField] private ActionTScriptable<bool> fadeAction;
         [SerializeField] private bool startFaded = true;
         [SerializeField] private float fadedAlpha = 0.5f;
 
@@ -54,23 +53,29 @@ namespace Assets.Scripts.Ghost
 
         public void ReappearImage()
         {
-            // Reset fade cooldown
-            cooldownTime = timeAllowedTillNextFade;
-            cooldownIsUp = false;
-
-            isInFadedState = false;
-            isInMiddleOfFade = true;
-
-            LeanTween.value(gameObject, skeletonAnim.skeleton.A, 1, fadeInDuration).setOnUpdate((float val) =>
+            if(isInFadedState && !isInMiddleOfFade)
             {
-                skeletonAnim.skeleton.A = val;
-            }).setOnComplete(() => { isInMiddleOfFade = false; });
+                cooldownTime = timeAllowedTillNextFade;
+                cooldownIsUp = false;
+
+                isInFadedState = false;
+                isInMiddleOfFade = true;
+                fadeAction.Set(true);
+
+                LeanTween.value(gameObject, skeletonAnim.skeleton.A, 1, fadeInDuration).setOnUpdate((float val) =>
+                {
+                    skeletonAnim.skeleton.A = val;
+                }).setOnComplete(() => { isInMiddleOfFade = false; });
+            }
+            // Reset fade cooldown
+
         }
 
-        public void FadeImage()
+        private void FadeImage()
         {
             isInFadedState = true;
             isInMiddleOfFade = true;
+            fadeAction.Set(false);
 
             LeanTween.value(gameObject, skeletonAnim.skeleton.A, fadedAlpha, fadeInDuration).setOnUpdate((float val) =>
             {
