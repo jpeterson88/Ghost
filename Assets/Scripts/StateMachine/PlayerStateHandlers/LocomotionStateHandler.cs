@@ -12,13 +12,14 @@ namespace Assets.Scripts.State.StateHandlers
     {
         [SerializeField] private PlayerStates idleState, spook1State;
         [SerializeField] private Rigidbody2D rb2d;
-        [SerializeField] private AnimationReferenceAsset right, left, upward, downward;
+        [SerializeField] private AnimationReferenceAsset right, left, upward, downward, idleLeft, idleRight;
         [SerializeField] private SpineSkeletonAnimationHandle animationHandler;
         [SerializeField] private float stopMagnitude = 1.5f;
         [SerializeField] private FacingDirection directionUtility;
         [SerializeField] private UncachedAudioController audioController;
 
-        private TrackEntry recentTrack;
+        private TrackEntry currentMovementTrack, currentIdleTrack;
+
 
         internal override void OnEnter(int state)
         {
@@ -39,6 +40,8 @@ namespace Assets.Scripts.State.StateHandlers
             }
         }
 
+
+
         internal override void OnFixedUpdate()
         {
             base.OnFixedUpdate();
@@ -46,33 +49,73 @@ namespace Assets.Scripts.State.StateHandlers
 
             if (IsInCurrentHandlerState())
             {
-                PlayAnimationBasedOnDirection();
+                Direction direction = GetMoveDirection(GetInputVector());
+
+                PlayDirectionalMovementAnimation(direction);
                 if (rb2d.linearVelocity.magnitude < stopMagnitude)
                     SetState(idleState);
-            }                
+            }
         }
 
-        private void PlayAnimationBasedOnDirection()
+        private void PlayDirectionalIdleAnimation(Direction direction, bool playBothTracks)
         {
-            Direction direction = GetMoveDirection(GetInputVector());            
+            FacingDirectionEnum facingDirection = directionUtility.GetCurrentFacing();
 
+            
+
+            if (currentIdleTrack != null)
+            {             
+                if (facingDirection == FacingDirectionEnum.Left && currentIdleTrack.Animation.Name != idleLeft.name)
+                {
+                    currentIdleTrack = animationHandler.PlayAnimationReference(idleLeft, 0, false, true);
+
+                    if (playBothTracks)
+                    {
+                        animationHandler.ClearTrack(1);
+                        currentIdleTrack = animationHandler.PlayAnimationReference(idleLeft, 1, false, true);
+                    }
+                }
+                else if (facingDirection == FacingDirectionEnum.Right && currentIdleTrack.Animation.Name != idleRight.name)
+                {
+                    currentIdleTrack = animationHandler.PlayAnimationReference(idleRight, 0, false, true);
+
+                    if(playBothTracks)
+                    {
+                        animationHandler.ClearTrack(1);
+                        animationHandler.PlayAnimationReference(idleLeft, 1, false, true);
+                    }
+                }
+            }
+            else
+            {
+                AnimationReferenceAsset directionalIdle = facingDirection == FacingDirectionEnum.Left ? idleLeft : idleRight;
+                currentIdleTrack = animationHandler.PlayAnimationReference(directionalIdle, 0, false, true);
+            }
+        }
+
+        private void PlayDirectionalMovementAnimation(Direction direction)
+        {
             if (!animationHandler.CompareTrackName(1, upward.name) && direction == Direction.Up)
             {
-                recentTrack = animationHandler.PlayAnimationReference(upward, 1, false, true);
+                currentMovementTrack = animationHandler.PlayAnimationReference(upward, 1, false, true);
             }
             else if (!animationHandler.CompareTrackName(1, right.name) && (direction == Direction.Right || direction == Direction.UpRight || direction == Direction.DownRight))
             {
                 directionUtility.SetFacingDirection(FacingDirectionEnum.Right);
-                recentTrack = animationHandler.PlayAnimationReference(right, 1, false, true);
+                currentMovementTrack = animationHandler.PlayAnimationReference(right, 1, false, true);
             }
             else if (!animationHandler.CompareTrackName(1, left.name) && (direction == Direction.Left || direction == Direction.UpLeft || direction == Direction.DownLeft))
             {
                 directionUtility.SetFacingDirection(FacingDirectionEnum.Left);
-                recentTrack = animationHandler.PlayAnimationReference(left, 1, false, true);
+                currentMovementTrack = animationHandler.PlayAnimationReference(left, 1, false, true);
             }
-            else if(!animationHandler.CompareTrackName(1, downward.name) && direction == Direction.Down)
+            else if (!animationHandler.CompareTrackName(1, downward.name) && direction == Direction.Down)
             {
-                recentTrack = animationHandler.PlayAnimationReference(downward, 1, false, true);
+                currentMovementTrack = animationHandler.PlayAnimationReference(downward, 1, false, true);
+            }
+            else if (!animationHandler.CompareTrackName(1, downward.name) && direction == Direction.Down)
+            {
+                currentMovementTrack = animationHandler.PlayAnimationReference(downward, 1, false, true);
             }
         }
 

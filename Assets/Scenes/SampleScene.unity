@@ -243,7 +243,7 @@ MeshRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 50
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &7121686
 MeshFilter:
@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 24843774}
   - component: {fileID: 24843778}
   m_Layer: 0
-  m_Name: streetlight_0 (1)
+  m_Name: streetlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -347,11 +347,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -4.941461, y: -4.6053224}
-      - {x: 0.57274294, y: -4.6204967}
-      - {x: 4.9661994, y: -4.640505}
-      - {x: 1.8200829, y: 1.3404212}
-      - {x: -0.048184156, y: 4.3059573}
+    - - {x: -3.59684, y: -4.0012174}
+      - {x: 3.231833, y: -3.9974253}
+      - {x: -0.016552687, y: 2.2892764}
   m_UseDelaunayMesh: 0
 --- !u!212 &24843776
 SpriteRenderer:
@@ -419,12 +417,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24843773}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8.41, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 333025962}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &24843778
 Rigidbody2D:
@@ -559,6 +557,38 @@ MonoBehaviour:
     Path: event:/Music/halloween-music
   allowOverridePlay: 1
   playOnAwake: 1
+--- !u!1 &333025961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 333025962}
+  m_Layer: 0
+  m_Name: Environment
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &333025962
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333025961}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 24843777}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &450302484
 GameObject:
   m_ObjectHideFlags: 0
@@ -1267,6 +1297,8 @@ MonoBehaviour:
   left: {fileID: 11400000, guid: dfb3b88834a0f9147a1d542945fb5972, type: 2}
   upward: {fileID: 11400000, guid: d0143ff46c4f2fb45843a146e51f7d98, type: 2}
   downward: {fileID: 11400000, guid: 07de31838dc54084b9caf422be5763f5, type: 2}
+  idleLeft: {fileID: 11400000, guid: 91e5fad5a391eca4a9bbd638e5b1c306, type: 2}
+  idleRight: {fileID: 11400000, guid: 4c5b8fa60dd2aa54799d004bcd99b0e9, type: 2}
   animationHandler: {fileID: 7121687}
   stopMagnitude: 3
   directionUtility: {fileID: 2034678476}
@@ -1321,7 +1353,7 @@ MonoBehaviour:
   allowedRepeatStates: 01000000
   setStateOnFirstFrameUpdate: 1
   startingState: 0
-  enableLogs: 0
+  enableLogs: 1
 --- !u!1 &922065857
 GameObject:
   m_ObjectHideFlags: 0
@@ -2179,4 +2211,4 @@ SceneRoots:
   - {fileID: 1837939229}
   - {fileID: 1181280250}
   - {fileID: 1704074006}
-  - {fileID: 24843777}
+  - {fileID: 333025962}

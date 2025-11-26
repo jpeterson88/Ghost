@@ -31,7 +31,7 @@ namespace Assets.Scripts.State.StateHandlers
 
 		internal override void OnEnter(int state)
 		{
-			base.OnEnter(state);		
+			base.OnEnter(state);
 
             // Stop player moving
             rb2d.linearVelocity = Vector2.zero;
