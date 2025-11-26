@@ -23,9 +23,15 @@ namespace Assets.Scripts.State.StateHandlers
             var currentFacing = facingDirection.GetCurrentFacing();
             
             if(currentFacing == FacingDirectionEnum.Left)
+            {
                 animationHandler.PlayAnimationReference(idleLeft, 0, false, true);
+                animationHandler.PlayAnimationReference(idleLeft, 1, false, true);
+            }
             else
+            {
                 animationHandler.PlayAnimationReference(idleRight, 0, false, true);
+                animationHandler.PlayAnimationReference(idleRight, 1, false, true);
+            }
         }
 
         internal override void OnUpdate()

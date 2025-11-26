@@ -171,7 +171,7 @@ namespace Assets.Scripts.State.StateHandlers
         internal override void OnExit()
         {
             base.OnExit();
-            animationHandler.ClearTrack(1);
+            //animationHandler.ClearTrack(1);
             audioController.Stop(true);
         }
     }
