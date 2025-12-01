@@ -10,13 +10,12 @@ public class GhostMovement : MonoBehaviour
     public float drag = 4f;
     [SerializeField] private PlayerStateMachine stateMachine;
 
-    private Vector2 velocity;
+    private Vector2 velocity = Vector2.zero;
     private Rigidbody2D rb;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0f; // Ensure no gravity
     }
 
     void Update()

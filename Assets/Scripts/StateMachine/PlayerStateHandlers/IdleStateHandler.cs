@@ -1,9 +1,7 @@
-﻿using Assets.Scripts.Ghost;
-using Assets.Scripts.StateMachine;
+﻿using Assets.Scripts.StateMachine;
 using Assets.Scripts.StateMachine.Enums;
 using Assets.Scripts.Utility;
 using Spine.Unity;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.State.StateHandlers
