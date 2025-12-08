@@ -1,9 +1,9 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Assets.Scripts.Data.Scriptables
+namespace Assets.Scripts.Data.Scriptables.Observables
 {    
-    public class ActionTScriptable<T> : ScriptableObject
+    public class ObservableTScriptable<T> : ScriptableObject
     {
 
         #region Public Variables

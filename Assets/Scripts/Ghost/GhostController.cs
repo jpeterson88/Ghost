@@ -1,12 +1,13 @@
 ﻿using Assets.Scripts.Audio;
 using Assets.Scripts.Data.Scriptables;
+using Assets.Scripts.Data.Scriptables.Observables;
 using UnityEngine;
 
 namespace Assets.Scripts.Ghost
 {
     internal class GhostController: MonoBehaviour
     {
-        [SerializeField] private ActionTScriptable<bool> onFadeAction;
+        [SerializeField] private ObservableTScriptable<bool> onFadeAction;
         [SerializeField] private ActionScriptable onSeenActionHandler;
         [SerializeField] private CachedAudioController fadeInAudio, fadeOutAudio;
         [SerializeField] private FadeUtility fadeUtility;

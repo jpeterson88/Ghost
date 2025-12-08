@@ -1,5 +1,6 @@
-﻿using Assets.Scripts.Data.Enums;
-using Assets.Scripts.Data.Scriptables;
+﻿using Assets.Scripts.Audio;
+using Assets.Scripts.Data.Enums;
+using Assets.Scripts.Data.Scriptables.Events.Implementations;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -7,23 +8,27 @@ namespace Assets.Scripts.Utility.Actions
 {
     internal class ActionLightEnumHandler: MonoBehaviour
     {
-        [SerializeField] private ActionBoolLightEnumScriptable actionBoolLightEnumScriptable;
+        [SerializeField] private ActionLightEnumScriptable lightSwitchAction;
         [SerializeField] private Light2D[] lightsOnWtihEnum, lightsOffwithEnum;
         [SerializeField] private LightSourceEnum sourceLightEnum;
+        [SerializeField] private CachedAudioController audioController;
         [SerializeField] private bool sourceOnByDefault;
 
         private bool isSourceOn;
 
         private void Start()
         {
-            actionBoolLightEnumScriptable.AddAction(HandleLightChange);
+            lightSwitchAction.AddAction(ToggleLightSwitch);
             isSourceOn = sourceOnByDefault;
         }
 
         private void HandleLightChange(bool isOff, LightSourceEnum lightSource) 
         {
             if (sourceLightEnum == lightSource)
+            {
+                audioController?.PlayOneShot();
                 SwitchLights(isOff);
+            }
         }
 
         private void SwitchLights(bool isOff)
@@ -37,15 +42,14 @@ namespace Assets.Scripts.Utility.Actions
                 lightOff.enabled = isOff ? true : false;
         }
 
-        private void OnDisable() => actionBoolLightEnumScriptable.RemoveAction(HandleLightChange);
-
+        private void OnDisable() => lightSwitchAction.RemoveAction(ToggleLightSwitch);
 
         [ContextMenu("Trigger TestToggleLightSwitchOn")]
-        private void TestToggleLightSwitchOn()
+        private void ToggleSwitchFromEditor() => ToggleLightSwitch(sourceLightEnum);
+        private void ToggleLightSwitch(LightSourceEnum lightSource)
         {
             isSourceOn = !isSourceOn;
             HandleLightChange(isSourceOn ? false : true, sourceLightEnum);
-            
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Data.Scriptables;
+﻿using Assets.Scripts.Data.Scriptables.Observables;
 using Assets.Scripts.StateMachine;
 using Assets.Scripts.StateMachine.Enums;
 using Spine.Unity;
@@ -14,7 +14,7 @@ namespace Assets.Scripts.Ghost
         [SerializeField] private float fadeInDuration, fadeOutDuration, timeAllowedTillNextFade;
         [SerializeField] private PlayerStateMachine stateMachine;
         [SerializeField] private PlayerStates[] fadeableStates;        
-        [SerializeField] private ActionTScriptable<bool> fadeAction;
+        [SerializeField] private ObservableTScriptable<bool> fadeAction;
         [SerializeField] private bool startFaded = true;
         [SerializeField] private float fadedAlpha = 0.5f;
 

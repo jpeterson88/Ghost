@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Data.Scriptables
 {
-    [CreateAssetMenu(menuName = "ScriptableObjects/Actions/ActionBoolLightEnumScriptable")]
+    [CreateAssetMenu(menuName = "ScriptableObjects/Actions/BoolLightEnum")]
     internal class ActionBoolLightEnumScriptable: ActionT1T2Scriptable<bool, LightSourceEnum>
     {
     }
