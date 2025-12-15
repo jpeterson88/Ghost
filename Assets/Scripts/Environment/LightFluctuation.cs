@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Data.Enums;
+﻿using Assets.Scripts.Audio;
+using Assets.Scripts.Data.Enums;
 using Assets.Scripts.Data.Scriptables.Actions.Implementations;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,15 +11,16 @@ namespace Assets.Scripts.Environment
     {
         [SerializeField] private Light2D[] lights;
         [SerializeField] private ActionCurseEnumScriptable startCurseScriptable, stopCurseScriptable;
+        [SerializeField] private CachedAudioController audioController;
         [SerializeField] private float fluctuationDuration;
         [SerializeField] private float bottomIntensity, ceilingIntensity;
         [SerializeField] private LeanTweenType easyType;
-        List<LTDescr> tweens;
         List<LightStruct> lightStructs;
+
+        LTDescr audioTween;
 
         private void Start()
         {
-            tweens = new List<LTDescr>();
             lightStructs = new List<LightStruct>();
             startCurseScriptable.AddAction(HandleLightCurseStart);
             stopCurseScriptable.AddAction(HandleLightCurseStop);
@@ -30,18 +32,29 @@ namespace Assets.Scripts.Environment
             {
                 lightStructs.Clear();
 
+                audioController.PlayOneShot();
+
+                // Tween audio
+                audioTween = LeanTween.value(audioController.GetVolume(), 0, fluctuationDuration)
+                .setOnUpdate((float value) => audioController.SetParam("Volume", value))
+                .setLoopPingPong()
+                .setEase(easyType);
+
+                // Tween lights
                 foreach (var light in lights)
                 {
                     float lightOriginalIntensity = light.intensity;
+                    
+                    // Drop light to zero at first
                     LTDescr tween = LeanTween.value(lightOriginalIntensity, bottomIntensity, fluctuationDuration)
                         .setOnUpdate((float value) => light.intensity = value)
                         .setOnComplete(() =>
                         {
-
+                            // AFter light is at 0, then ping pong between the ceiling intensity declared
                             LeanTween.value(bottomIntensity, ceilingIntensity, fluctuationDuration)
-                        .setOnUpdate((float value) => light.intensity = value)
-                        .setLoopPingPong()
-                        .setEase(easyType);
+                            .setOnUpdate((float value)=> light.intensity = value)
+                            .setLoopPingPong()
+                            .setEase(easyType);
                         });
                         
 
@@ -60,13 +73,24 @@ namespace Assets.Scripts.Environment
         {
             if (curseType == CurseTypeEnum.LightFluctuate)
             {
+                if(audioTween != null)                
+                    LeanTween.cancel(audioTween.id);
+                
+                // Tween audio
+                LeanTween.value(audioController.GetVolume(), 0, fluctuationDuration / 2)
+                    .setOnUpdate((float value) => {
+                        audioController.SetParam("Volume", value);
+                    }).setEase(easyType)
+                    .setOnComplete(() => audioController.Stop(false));
+
+                // Tween lights
                 foreach (var lightStruct in lightStructs)
                 {
                     LeanTween.cancel(lightStruct.tween.id);
 
                     LeanTween.value(lightStruct.light.intensity, lightStruct.originalIntensity, fluctuationDuration / 2)
                         .setOnUpdate((float value) => lightStruct.light.intensity = value)
-                        .setEaseInSine();
+                        .setEase(easyType);
                 }
             }
         }

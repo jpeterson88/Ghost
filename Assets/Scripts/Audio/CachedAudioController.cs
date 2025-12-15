@@ -52,6 +52,14 @@ namespace Assets.Scripts.Audio
             instance.setParameterByName(name, value);
         }
 
+        public float GetVolume()
+        {
+            float volume;
+            instance.getVolume(out volume);
+
+            return volume;
+        }
+
 
         void OnDestroy()
         {
