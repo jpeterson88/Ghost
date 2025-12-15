@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Audio;
+﻿//namespace DentedPixel{
+
 using Assets.Scripts.Data.Enums;
 using Assets.Scripts.Data.Scriptables.Events.Implementations;
 using UnityEngine;
@@ -22,7 +23,6 @@ namespace Assets.Scripts.Utility.Triggers
         {
             if (isInTrigger && Input.GetKeyDown(KeyCode.E))
                 triggerLight?.Invoke(lightSourceEnum);
-
         }
 
         private void OnTriggerExit2D(Collider2D collision)
