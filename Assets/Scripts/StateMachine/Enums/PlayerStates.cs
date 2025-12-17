@@ -4,6 +4,7 @@
     {
         Idle = 0,
         Locomotion = 1,
-        Spook1 = 2
+        Spook1 = 2,
+        CastCurse = 3,
     }
 }

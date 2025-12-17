@@ -59,6 +59,12 @@ public class SpineSkeletonAnimationHandle : MonoBehaviour
 
     }
 
+    public void SetSkin(string skinname)
+    {
+        skeletonAnimation.skeleton.SetSkin(skinname);
+        skeletonAnimation.skeleton.SetSlotsToSetupPose();
+    }
+
     public void SetFacingDirection(FacingDirectionEnum facingDirection)
     {
         if(facingDirection == FacingDirectionEnum.Left && skeletonAnimation.Skeleton.ScaleX == 1)

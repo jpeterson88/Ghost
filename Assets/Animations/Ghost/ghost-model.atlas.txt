@@ -1,27 +1,42 @@
 ghost-model.png
-size:1232,677
+size:1106,776
 filter:Linear,Linear
 pma:true
 Body
-bounds:776,96,454,579
-Happy Mouth
-bounds:1215,42,31,10
+bounds:650,195,454,579
+Curse Eye Left
+bounds:819,113,80,75
+offsets:0,0,80,76
 rotate:90
+Curse Eye Right
+bounds:870,32,79,75
+offsets:0,0,79,76
+rotate:90
+Curse Mouth
+bounds:650,8,53,22
+Happy Mouth
+bounds:705,20,31,10
 Layer 3
-bounds:1215,75,11,19
+bounds:705,7,11,19
 offsets:1,1,13,21
+rotate:90
 Layer 4
-bounds:1215,22,10,18
+bounds:726,8,10,18
 offsets:1,1,12,21
+rotate:90
 Left Arm
-bounds:877,21,95,73
+bounds:744,98,95,73
+rotate:90
 Right Arm
-bounds:974,21,94,73
+bounds:795,2,94,73
 offsets:1,0,95,73
+rotate:90
 scare-body-1
-bounds:2,29,772,646
+bounds:2,2,772,646
+rotate:90
 scare-eyes-1
-bounds:1070,34,143,60
+bounds:650,32,143,60
 offsets:0,0,143,61
 scare-mouth-1
-bounds:776,2,99,92
+bounds:650,94,99,92
+rotate:90

@@ -5062,6 +5062,7 @@ MonoBehaviour:
   canHandleStates: 01000000
   idleState: 0
   spook1State: 2
+  castCurseState: 3
   rb2d: {fileID: 5955428198235959819}
   right: {fileID: 11400000, guid: dbed449e8f20eff4190ad818a2111d91, type: 2}
   left: {fileID: 11400000, guid: dfb3b88834a0f9147a1d542945fb5972, type: 2}
@@ -5690,6 +5691,7 @@ MonoBehaviour:
   canHandleStates: 00000000
   locomotionState: 1
   spook1State: 2
+  castCurseState: 3
   rb2d: {fileID: 5955428198235959819}
   idleLeft: {fileID: 11400000, guid: 91e5fad5a391eca4a9bbd638e5b1c306, type: 2}
   idleRight: {fileID: 11400000, guid: 4c5b8fa60dd2aa54799d004bcd99b0e9, type: 2}
@@ -5836,6 +5838,57 @@ Transform:
   - {fileID: 5838653554220146609}
   m_Father: {fileID: 420635036366551625}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7501999772372642181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8478614183286625350}
+  - component: {fileID: 2115811854874690691}
+  m_Layer: 0
+  m_Name: Cast Curse State Handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8478614183286625350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7501999772372642181}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6111063862665223537}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2115811854874690691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7501999772372642181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 455fe7a8fdde8fa49be37f6ae240885f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.State.StateHandlers.CastCurseStateHandler
+  canHandleStates: 03000000
+  idleState: 0
+  castCurseAnim: {fileID: 11400000, guid: 0a26ecf24fd8ad74ab66ed495c4578c8, type: 2}
+  animationHandler: {fileID: 490000567640868241}
+  castCurseSkinName: curse
+  castTime: 3
+  animationPlaybackSpeed: 0.65
 --- !u!1 &7576861462102524249
 GameObject:
   m_ObjectHideFlags: 0
@@ -5869,6 +5922,7 @@ Transform:
   - {fileID: 4587840288048376018}
   - {fileID: 712765614369265919}
   - {fileID: 846481888899483375}
+  - {fileID: 8478614183286625350}
   m_Father: {fileID: 420635036366551625}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6288647022419262877
