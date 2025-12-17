@@ -24,8 +24,14 @@ MonoBehaviour:
     multiplyMaterials: []
     screenMaterials: []
   skeletonDataModifiers: []
-  fromAnimation: []
-  toAnimation: []
-  duration: []
+  fromAnimation:
+  - cast-curse
+  - cast-curse
+  toAnimation:
+  - idle-left
+  - idle-right
+  duration:
+  - 0
+  - 0
   defaultMix: 0.42
   controller: {fileID: 0}

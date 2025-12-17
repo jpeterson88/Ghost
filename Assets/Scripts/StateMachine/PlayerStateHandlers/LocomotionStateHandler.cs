@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Audio;
+using Assets.Scripts.Ghost;
 using Assets.Scripts.StateMachine;
 using Assets.Scripts.StateMachine.Enums;
 using Assets.Scripts.Utility;
@@ -17,9 +18,10 @@ namespace Assets.Scripts.State.StateHandlers
         [SerializeField] private float stopMagnitude = 1.5f;
         [SerializeField] private FacingDirection directionUtility;
         [SerializeField] private UncachedAudioController audioController;
+        [SerializeField] private CastCurseController curseController;
 
-        private TrackEntry currentMovementTrack, currentIdleTrack;
-
+        private TrackEntry currentIdleTrack;
+        private TrackEntry currentMovementTrack;
 
         internal override void OnEnter(int state)
         {
@@ -35,7 +37,7 @@ namespace Assets.Scripts.State.StateHandlers
             {
                 if (Input.GetKeyDown(KeyCode.Space))                
                     SetState(spook1State);                
-                else if (Input.GetKeyDown(KeyCode.R))
+                else if (Input.GetKeyDown(KeyCode.R) && !curseController.IsOnCooldown())
                     SetState(castCurseState);
             }
         }

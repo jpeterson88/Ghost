@@ -33,7 +33,7 @@ namespace Assets.Scripts.Audio
                 instance.start();
         }
 
-        public void Stop(bool withFade)
+        public void Stop(bool withFade = true)
         {
             FMOD.Studio.STOP_MODE stopMode = withFade ? FMOD.Studio.STOP_MODE.ALLOWFADEOUT : FMOD.Studio.STOP_MODE.IMMEDIATE;
             instance.stop(stopMode);

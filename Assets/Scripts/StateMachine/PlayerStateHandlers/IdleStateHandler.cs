@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.StateMachine;
+﻿using Assets.Scripts.Ghost;
+using Assets.Scripts.StateMachine;
 using Assets.Scripts.StateMachine.Enums;
 using Assets.Scripts.Utility;
 using Spine.Unity;
@@ -13,6 +14,7 @@ namespace Assets.Scripts.State.StateHandlers
         [SerializeField] private AnimationReferenceAsset idleLeft, idleRight;
         [SerializeField] private SpineSkeletonAnimationHandle animationHandler;
         [SerializeField] private FacingDirection facingDirection;
+        [SerializeField] private CastCurseController curseController;
 
         internal override void OnEnter(int state)
         {
@@ -40,7 +42,7 @@ namespace Assets.Scripts.State.StateHandlers
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                     SetState(spook1State);
-                else if (Input.GetKeyDown(KeyCode.R))
+                else if (Input.GetKeyDown(KeyCode.R) && !curseController.IsOnCooldown())
                     SetState(castCurseState);
             }
         }

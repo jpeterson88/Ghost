@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.StateMachine;
+﻿using Assets.Scripts.Audio;
+using Assets.Scripts.Ghost;
+using Assets.Scripts.StateMachine;
 using Assets.Scripts.StateMachine.Enums;
 using Spine.Unity;
 using UnityEngine;
@@ -10,15 +12,19 @@ namespace Assets.Scripts.State.StateHandlers
         [SerializeField] private PlayerStates idleState;
         [SerializeField] private AnimationReferenceAsset castCurseAnim;
         [SerializeField] private SpineSkeletonAnimationHandle animationHandler;
-        [SerializeField] private string castCurseSkinName;
+        [SerializeField] private CastCurseController curseController;
+        [SerializeField] private CachedAudioController audioController;
+        [SerializeField] private string castCurseSkinName, normalSkinName;
         [SerializeField] private float castTime, animationPlaybackSpeed = 1f;
 
         private float currentElapsed;
         internal override void OnEnter(int state)
         {
             base.OnEnter(state);
+            curseController.StartCurse();
             animationHandler.SetSkin(castCurseSkinName);
             animationHandler.PlayAnimationReference(castCurseAnim, 1, false, true, animationPlaybackSpeed);
+            audioController.PlayOneShot();
             currentElapsed = 0f;
         }
 
@@ -32,12 +38,12 @@ namespace Assets.Scripts.State.StateHandlers
 
                 if (currentElapsed >= castTime)
                 {
-                    // TODO: Inform game of successful cast
+                    curseController.CastSuccessfulCurse();
                     SetState(idleState);
                 }
                 else if (Input.GetKeyUp(KeyCode.R))
                 {
-                    
+                    curseController.EndCurse();
                     SetState(idleState);
                 }
             }
@@ -47,7 +53,10 @@ namespace Assets.Scripts.State.StateHandlers
         internal override void OnExit()
         {
             base.OnExit();
-            //TODO: Start cast cooldown timer
+            animationHandler.ClearTrack(1);
+            animationHandler.SetSkin(normalSkinName);
+            curseController.StartCooldown();
+            audioController.Stop();            
         }
     }
 }
