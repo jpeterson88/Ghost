@@ -83,7 +83,7 @@ public class CircularPathSpawner : MonoBehaviour
         {
             if (cancelMovement)
             {
-                yield break; // Exit the coroutine if movement is canceled
+                yield break;
             }
 
             // Calculate the angle based on elapsed time, angular speed, and object index for spacing
@@ -97,17 +97,16 @@ public class CircularPathSpawner : MonoBehaviour
             yield return null;
         }
 
-        // Move the object to the target point after completing the circular path
-        StartCoroutine(MoveToTarget(objTransform));
+        StartCoroutine(MoveEndToTarget(objTransform));
     }
 
-    private IEnumerator MoveToTarget(Transform objTransform)
+    private IEnumerator MoveEndToTarget(Transform objTransform)
     {
         while (Vector3.Distance(objTransform.position, endingTarget.position) > 0.01f)
         {
             if (cancelMovement)
             {
-                yield break; // Exit the coroutine if movement is canceled
+                yield break;
             }
 
             // Move the object towards the target point at the specified speed

@@ -97,7 +97,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Environment.bank
   Name: Environment
   StudioPath: bank:/Environment
-  lastModified: 639015798139861519
+  lastModified: 639016041226505463
   FileSizes:
   - Name: Desktop
     Value: 1189216
@@ -144,7 +144,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639015798140121683
+  lastModified: 639016041226755533
   FileSizes:
   - Name: Desktop
     Value: 804960
@@ -164,10 +164,10 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Character SFX.bank
   Name: Character SFX
   StudioPath: bank:/Character SFX
-  lastModified: 639015798139607386
+  lastModified: 639016041226245431
   FileSizes:
   - Name: Desktop
-    Value: 700832
+    Value: 705440
   Exists: 1
 --- !u!114 &-3882742410177109216
 MonoBehaviour:
@@ -211,10 +211,10 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639015798139911592
+  lastModified: 639016041226555475
   FileSizes:
   - Name: Desktop
-    Value: 1576
+    Value: 1624
   Exists: 1
 --- !u!114 &-548577555255307819
 MonoBehaviour:
@@ -297,12 +297,13 @@ MonoBehaviour:
   - {fileID: -8207016421918203317}
   - {fileID: 3269263824920338357}
   - {fileID: -8989092726821698858}
+  - {fileID: 3387677231055456615}
   EditorParameters: []
   MasterBanks:
   - {fileID: 2625838092753379136}
   StringsBanks:
   - {fileID: -1758736953036213874}
-  cacheTime: 639015798140121683
+  cacheTime: 639016041226755533
   cacheVersion: 131634
 --- !u!114 &1666999791229151387
 MonoBehaviour:
@@ -373,7 +374,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639015798139891705
+  lastModified: 639016041226535468
   FileSizes:
   - Name: Desktop
     Value: 2172
@@ -405,6 +406,33 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 6000
+--- !u!114 &3387677231055456615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/General Sfx/puff
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/General Sfx/puff
+  Guid:
+    Data1: -588793846
+    Data2: 1285467854
+    Data3: 1795255742
+    Data4: 2102438354
+  Banks:
+  - {fileID: -4896890727854552552}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 456
 --- !u!114 &6453247447897130571
 MonoBehaviour:
   m_ObjectHideFlags: 0

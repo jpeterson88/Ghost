@@ -2,7 +2,10 @@
 using Assets.Scripts.Ghost;
 using Assets.Scripts.StateMachine;
 using Assets.Scripts.StateMachine.Enums;
+using Assets.Scripts.Utility;
 using Spine.Unity;
+using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 
 namespace Assets.Scripts.State.StateHandlers
@@ -14,8 +17,12 @@ namespace Assets.Scripts.State.StateHandlers
         [SerializeField] private SpineSkeletonAnimationHandle animationHandler;
         [SerializeField] private CastCurseController curseController;
         [SerializeField] private CachedAudioController audioController;
+        [SerializeField] private CameraPriorityUtility cameraPriorityUtility;
+        [SerializeField] private CinemachineCamera main, close;
+        
         [SerializeField] private string castCurseSkinName, normalSkinName;
-        [SerializeField] private float castTime, animationPlaybackSpeed = 1f;
+        [SerializeField] private float castTime, animationPlaybackSpeed = 1f, waitToSetSkinOnExit = .5f;
+        
 
         private float currentElapsed;
         internal override void OnEnter(int state)
@@ -26,6 +33,7 @@ namespace Assets.Scripts.State.StateHandlers
             animationHandler.PlayAnimationReference(castCurseAnim, 1, false, true, animationPlaybackSpeed);
             audioController.PlayOneShot();
             currentElapsed = 0f;
+            cameraPriorityUtility.SwitchCameras(close);
         }
 
         internal override void OnUpdate()
@@ -54,9 +62,18 @@ namespace Assets.Scripts.State.StateHandlers
         {
             base.OnExit();
             animationHandler.ClearTrack(1);
-            animationHandler.SetSkin(normalSkinName);
             curseController.StartCooldown();
-            audioController.Stop();            
+            audioController.Stop();
+
+            StartCoroutine(WaitToSetSkin());
+        }
+
+        // TODO: Move this to maybe a GhostSkinHandler
+        private IEnumerator WaitToSetSkin()
+        {
+            cameraPriorityUtility.SwitchCameras(main);
+            yield return new WaitForSeconds(waitToSetSkinOnExit);
+            animationHandler.SetSkin(normalSkinName);
         }
     }
 }

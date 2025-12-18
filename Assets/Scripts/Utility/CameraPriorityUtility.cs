@@ -14,8 +14,6 @@ namespace Assets.Scripts.Utility
         {
             mainDefaultCamPriority = mainCam.Priority.Value;
             secondaryDefaultCamPriority = secondaryCam.Priority.Value;
-
-            
         }
 
         public void SwitchCameras(CinemachineCamera switchToCamera)

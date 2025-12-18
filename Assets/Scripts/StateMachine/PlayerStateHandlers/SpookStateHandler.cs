@@ -7,7 +7,6 @@ using FMODUnity;
 using Spine;
 using Spine.Unity;
 using Unity.Cinemachine;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.State.StateHandlers
@@ -25,6 +24,7 @@ namespace Assets.Scripts.State.StateHandlers
 		//TODO Camera direct reference should be switched out to an event based scriptable
 		[SerializeField] private CameraPriorityUtility cameraPriorityUtility;
 		[SerializeField] private CinemachineCamera closeUpCamera, mainCamera;
+
 		[SerializeField] private float playSpeed = 1f;
 
 		TrackEntry currentTrack;
@@ -41,15 +41,9 @@ namespace Assets.Scripts.State.StateHandlers
             bringDownEmitter.Play();
 			cameraPriorityUtility.SwitchCameras(closeUpCamera);
             audioController.PlayOneShot();
-            SetSkin(spookSkinName);
+            animationHandler.SetSkin(spookSkinName);
             currentTrack = animationHandler.PlayAnimationReference(spook1Anim, 0, false, false, playSpeed);
 		}
-
-		private void SetSkin(string skinname)
-		{
-            animationHandler.skeletonAnimation.skeleton.SetSkin(skinname);
-            animationHandler.skeletonAnimation.skeleton.SetSlotsToSetupPose();
-        }
 
 		internal override void OnFixedUpdate()
 		{
@@ -64,7 +58,8 @@ namespace Assets.Scripts.State.StateHandlers
             cameraPriorityUtility.SwitchCameras(mainCamera);
             bringDownEmitter.Stop();
             currentTrack = null;
-            SetSkin(normalSkinName);
         }
+
+
 	}
 }

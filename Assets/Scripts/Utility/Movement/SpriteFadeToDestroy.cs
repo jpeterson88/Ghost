@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Audio;
+using System.Collections;
 using UnityEngine;
 
 public class SpriteFadeToDestroy : MonoBehaviour
 {
+    [SerializeField] private UncachedAudioController audioController;
     public float fadeDuration = 2f, fadeInDuration = 1f;
 
     private SpriteRenderer spriteRenderer;
@@ -52,6 +54,8 @@ public class SpriteFadeToDestroy : MonoBehaviour
 
     public void Cleanup()
     {
+        audioController.Play();
+
         if (spriteRenderer != null)
         {
             StopCoroutine(fadeInCoroutine);

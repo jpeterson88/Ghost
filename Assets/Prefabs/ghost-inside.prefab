@@ -10693,7 +10693,7 @@ MonoBehaviour:
   movementDuration: 4.5
   endingTarget: {fileID: 0}
   numberOfObjects: 3
-  moveToTargetSpeed: 15
+  moveToTargetSpeed: 10
 --- !u!1 &6306721937079222806
 GameObject:
   m_ObjectHideFlags: 0
@@ -10888,10 +10888,14 @@ MonoBehaviour:
   animationHandler: {fileID: 490000567640868241}
   curseController: {fileID: 89528911479359179}
   audioController: {fileID: 6901653491588904865}
+  cameraPriorityUtility: {fileID: 0}
+  main: {fileID: 0}
+  close: {fileID: 0}
   castCurseSkinName: curse
   normalSkinName: normal
   castTime: 4.5
   animationPlaybackSpeed: 0.65
+  waitToSetSkinOnExit: 0.5
 --- !u!114 &89528911479359179
 MonoBehaviour:
   m_ObjectHideFlags: 0

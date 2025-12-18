@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4210727226389134846}
   - component: {fileID: -9147055273042085600}
   - component: {fileID: -86719528466943730}
+  - component: {fileID: 6152154417825626261}
   m_Layer: 0
   m_Name: Curse
   m_TagString: Untagged
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 85
   m_Sprite: {fileID: 21300000, guid: c4c548a339b4d41a590928c0c98934a7, type: 3}
   m_Color: {r: 0.8584906, g: 0, b: 0.66458035, a: 1}
   m_FlipX: 0
@@ -228,4 +229,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be88965e9151f154cac292cc885d2b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpriteFadeToDestroy
+  audioController: {fileID: 6152154417825626261}
   fadeDuration: 0.5
+  fadeInDuration: 1
+--- !u!114 &6152154417825626261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6336581457160614114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1740c0f88205ca409cfcb9e0d58b73e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Audio.UncachedAudioController
+  fadeoutTime: 1
+  eventReference:
+    Guid:
+      Data1: -588793846
+      Data2: 1285467854
+      Data3: 1795255742
+      Data4: 2102438354
+    Path: event:/General Sfx/puff
