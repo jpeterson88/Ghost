@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-namespace Assets.Scripts.Environment
+namespace Assets.Scripts.Environment.Curses
 {
-    internal class LightFluctuation : MonoBehaviour
+    internal class LightFluctuation : CursedBase
     {
         [SerializeField] private Light2D[] lights;
         [SerializeField] private ActionCurseEnumScriptable startCurseScriptable, stopCurseScriptable;
@@ -15,8 +15,9 @@ namespace Assets.Scripts.Environment
         [SerializeField] private float fluctuationDuration;
         [SerializeField] private float bottomIntensity, ceilingIntensity;
         [SerializeField] private LeanTweenType easyType;
-        List<LightStruct> lightStructs;
 
+
+        List<LightStruct> lightStructs;
         LTDescr audioTween;
 
         private void Start()

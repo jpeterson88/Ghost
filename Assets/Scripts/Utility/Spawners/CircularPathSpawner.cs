@@ -17,9 +17,6 @@ public class CircularPathSpawner : MonoBehaviour
     [Tooltip("The duration (in seconds) for which the objects will move along the path.")]
     public float movementDuration = 3f;
 
-    [Tooltip("The target point where objects will move after completing the circular path.")]
-    public Transform endingTarget;
-
     [Tooltip("The number of objects to spawn.")]
     public int numberOfObjects = 3;
 
@@ -29,6 +26,7 @@ public class CircularPathSpawner : MonoBehaviour
     private float startTime;
     private bool cancelMovement = false; // Flag to cancel movement
     private List<GameObject> spawnedObjects;
+    private Transform endingTarget;
 
     private void Start()
     {
@@ -39,8 +37,9 @@ public class CircularPathSpawner : MonoBehaviour
     /// <summary>
     /// Spawns multiple objects and moves them along the circular path.
     /// </summary>
-    public void SpawnAndMoveObjects()
+    public void SpawnAndMoveObjects(Transform finalTarget)
     {
+        endingTarget = finalTarget;
         if (objectToSpawn == null || endingTarget == null)
         {
             Debug.LogWarning("Object to spawn or target point is not assigned.");
@@ -97,10 +96,10 @@ public class CircularPathSpawner : MonoBehaviour
             yield return null;
         }
 
-        StartCoroutine(MoveEndToTarget(objTransform));
+        StartCoroutine(MoveEndToTarget(objTransform, index == 0));
     }
 
-    private IEnumerator MoveEndToTarget(Transform objTransform)
+    private IEnumerator MoveEndToTarget(Transform objTransform, bool isFirst)
     {
         while (Vector3.Distance(objTransform.position, endingTarget.position) > 0.01f)
         {
@@ -124,7 +123,7 @@ public class CircularPathSpawner : MonoBehaviour
 
         var fadeAtEnd = objTransform.GetComponent<SpriteFadeToDestroy>();
         if (fadeAtEnd != null)
-            fadeAtEnd.Cleanup();
+            fadeAtEnd.Cleanup(isFirst);
     }
 
     private void OnEnd()
@@ -135,7 +134,7 @@ public class CircularPathSpawner : MonoBehaviour
             {
                 var fade = obj.GetComponent<SpriteFadeToDestroy>();
                 if (fade != null)
-                    fade.Cleanup();
+                    fade.Cleanup(false);
             }
         }
     }

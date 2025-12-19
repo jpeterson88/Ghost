@@ -5127,7 +5127,7 @@ MonoBehaviour:
   stopMagnitude: 3
   directionUtility: {fileID: 2201487174393855563}
   audioController: {fileID: 1182146352926520126}
-  curseController: {fileID: 89528911479359179}
+  curseController: {fileID: 6939106975059663183}
 --- !u!1 &3671703124884558232
 GameObject:
   m_ObjectHideFlags: 0
@@ -5194,6 +5194,7 @@ Transform:
   m_Children:
   - {fileID: 2013202288271622956}
   - {fileID: 1053575428043350348}
+  - {fileID: 1549862107650190677}
   m_Father: {fileID: 420635036366551625}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4279606893439974381
@@ -10279,6 +10280,91 @@ MonoBehaviour:
     Path: event:/Ghost/curse-whisper
   allowOverridePlay: 1
   playOnAwake: 0
+--- !u!1 &4585130281145595182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1549862107650190677}
+  - component: {fileID: 6939106975059663183}
+  - component: {fileID: 7103603076868565931}
+  m_Layer: 7
+  m_Name: Curse Controlller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1549862107650190677
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4585130281145595182}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 937727403100958039}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6939106975059663183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4585130281145595182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24330338621957f4ab554da1a13516d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Ghost.CastCurseController
+  cooldownDuration: 1
+  curseSpawner: {fileID: 1752504225657702199}
+  actionCurseEnumScriptable: {fileID: 11400000, guid: 9aa8f842f1f6c11459a2ce89eb68d962, type: 2}
+  delayToNotifyCurseSuccess: 0.2
+--- !u!58 &7103603076868565931
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4585130281145595182}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 1}
+  m_Radius: 3
 --- !u!1 &4675200816549766082
 GameObject:
   m_ObjectHideFlags: 0
@@ -10642,7 +10728,7 @@ MonoBehaviour:
   idleRight: {fileID: 11400000, guid: 4c5b8fa60dd2aa54799d004bcd99b0e9, type: 2}
   animationHandler: {fileID: 490000567640868241}
   facingDirection: {fileID: 2201487174393855563}
-  curseController: {fileID: 89528911479359179}
+  curseController: {fileID: 6939106975059663183}
 --- !u!1 &6008902756293962791
 GameObject:
   m_ObjectHideFlags: 0
@@ -10691,7 +10777,6 @@ MonoBehaviour:
   radius: 1.6
   angularSpeed: 250
   movementDuration: 4.5
-  endingTarget: {fileID: 0}
   numberOfObjects: 3
   moveToTargetSpeed: 10
 --- !u!1 &6306721937079222806
@@ -10847,7 +10932,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8478614183286625350}
   - component: {fileID: 2115811854874690691}
-  - component: {fileID: 89528911479359179}
   m_Layer: 0
   m_Name: Cast Curse State Handler
   m_TagString: Untagged
@@ -10886,7 +10970,7 @@ MonoBehaviour:
   idleState: 0
   castCurseAnim: {fileID: 11400000, guid: 0a26ecf24fd8ad74ab66ed495c4578c8, type: 2}
   animationHandler: {fileID: 490000567640868241}
-  curseController: {fileID: 89528911479359179}
+  curseController: {fileID: 6939106975059663183}
   audioController: {fileID: 6901653491588904865}
   cameraPriorityUtility: {fileID: 0}
   main: {fileID: 0}
@@ -10896,22 +10980,6 @@ MonoBehaviour:
   castTime: 4.5
   animationPlaybackSpeed: 0.65
   waitToSetSkinOnExit: 0.5
---- !u!114 &89528911479359179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7501999772372642181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24330338621957f4ab554da1a13516d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Ghost.CastCurseController
-  cooldownDuration: 1
-  curseSpawner: {fileID: 1752504225657702199}
-  actionCurseEnumScriptable: {fileID: 11400000, guid: 9aa8f842f1f6c11459a2ce89eb68d962, type: 2}
-  delayToNotifyCurseSuccess: 0.2
 --- !u!1 &7576861462102524249
 GameObject:
   m_ObjectHideFlags: 0

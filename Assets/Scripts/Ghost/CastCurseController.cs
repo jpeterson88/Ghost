@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Data.Enums;
 using Assets.Scripts.Data.Scriptables.Actions.Implementations;
+using Assets.Scripts.Environment.Curses;
 using UnityEngine;
 
 namespace Assets.Scripts.Ghost
@@ -13,20 +14,18 @@ namespace Assets.Scripts.Ghost
 
         private bool isOnCooldown;
         private float currentCooldownTime;
-        public void StartCooldown()
-        {
-            isOnCooldown = true;
-        }
+        private CurseTypeEnum targetCurseType;
+        private Transform targetTransform;
 
-        public void StartCurse()
-        {
-            curseSpawner.SpawnAndMoveObjects();
-        }
+        public void StartCooldown() => isOnCooldown = true;
 
-        public void EndCurse()
-        {
-            curseSpawner.CancelMovement();
-        }
+        public void StartCurse() => curseSpawner.SpawnAndMoveObjects(targetTransform);
+
+        public bool CanCurse() => targetCurseType != CurseTypeEnum.None && !isOnCooldown;
+
+        public void EndCurse() => curseSpawner.CancelMovement();
+
+        public Transform GetTargetTransform() => targetTransform;
 
         private void Update()
         {
@@ -42,15 +41,31 @@ namespace Assets.Scripts.Ghost
             }
         }
 
-        public bool IsOnCooldown() => isOnCooldown;
+        private bool IsOnCooldown() => isOnCooldown;
+
+        
 
         public void CastSuccessfulCurse() => StartCoroutine(DelayedCurseNotification());
 
         private System.Collections.IEnumerator DelayedCurseNotification()
         {
             yield return new WaitForSeconds(delayToNotifyCurseSuccess);
+            Debug.Log(($"Trigger successful curse: ${targetCurseType}"));
+            actionCurseEnumScriptable.Invoke(targetCurseType);
+        }
 
-            actionCurseEnumScriptable.Invoke(CurseTypeEnum.LightFluctuate);
+        private void OnTriggerEnter2D(Collider2D collision)
+        {           
+            // Parent must have ICursedObject
+            targetCurseType = collision.gameObject.GetComponentInParent<CursedBase>().objectCurseType;
+            targetTransform = collision.transform;
+            Debug.Log(($"Set targetCurseType to: ${targetCurseType}"));
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            targetCurseType = CurseTypeEnum.None;
+            targetTransform = null;
         }
     }
 }

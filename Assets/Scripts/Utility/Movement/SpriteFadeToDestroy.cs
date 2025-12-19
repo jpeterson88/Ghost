@@ -52,9 +52,13 @@ public class SpriteFadeToDestroy : MonoBehaviour
         spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);
     }
 
-    public void Cleanup()
+    public void Cleanup(bool isFirst)
     {
-        audioController.Play();
+        if(isFirst)
+        {
+            // EMIT CURSE SUCCESS
+            audioController.Play();
+        }
 
         if (spriteRenderer != null)
         {

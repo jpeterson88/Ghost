@@ -37,7 +37,7 @@ namespace Assets.Scripts.State.StateHandlers
             {
                 if (Input.GetKeyDown(KeyCode.Space))                
                     SetState(spook1State);                
-                else if (Input.GetKeyDown(KeyCode.R) && !curseController.IsOnCooldown())
+                else if (Input.GetKeyDown(KeyCode.R) && curseController.CanCurse())
                     SetState(castCurseState);
             }
         }

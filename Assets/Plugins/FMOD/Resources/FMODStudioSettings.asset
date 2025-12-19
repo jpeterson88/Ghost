@@ -479,7 +479,7 @@ MonoBehaviour:
   - Master
   Banks:
   - Character SFX
-  - Environment
+  - General
   - Music
   BanksToLoad: []
   LiveUpdatePort: 9264

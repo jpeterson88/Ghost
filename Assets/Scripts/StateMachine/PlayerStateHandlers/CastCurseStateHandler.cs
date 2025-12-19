@@ -28,6 +28,7 @@ namespace Assets.Scripts.State.StateHandlers
         internal override void OnEnter(int state)
         {
             base.OnEnter(state);
+
             curseController.StartCurse();
             animationHandler.SetSkin(castCurseSkinName);
             animationHandler.PlayAnimationReference(castCurseAnim, 1, false, true, animationPlaybackSpeed);

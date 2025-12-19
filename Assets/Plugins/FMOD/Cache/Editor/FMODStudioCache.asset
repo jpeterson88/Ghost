@@ -46,7 +46,7 @@ MonoBehaviour:
     Data3: -592054894
     Data4: -1049220966
   Banks:
-  - {fileID: -7253157856568259225}
+  - {fileID: -6910220195294961778}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -82,26 +82,6 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
---- !u!114 &-7253157856568259225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Environment.bank
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: ../../Audio/Ghost/ghost/Build/Desktop/Environment.bank
-  Name: Environment
-  StudioPath: bank:/Environment
-  lastModified: 639016041226505463
-  FileSizes:
-  - Name: Desktop
-    Value: 1189216
-  Exists: 1
 --- !u!114 &-7128726621758503428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +109,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 54000
+--- !u!114 &-6910220195294961778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/General.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: ../../Audio/Ghost/ghost/Build/Desktop/General.bank
+  Name: General
+  StudioPath: bank:/General
+  lastModified: 639017489514001442
+  FileSizes:
+  - Name: Desktop
+    Value: 1836224
+  Exists: 1
 --- !u!114 &-6906092397127869660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,11 +144,65 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639016041226755533
+  lastModified: 639017489514256863
   FileSizes:
   - Name: Desktop
     Value: 804960
   Exists: 1
+--- !u!114 &-6769208719107468984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/General Sfx/curse-success-1
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/General Sfx/curse-success-1
+  Guid:
+    Data1: -1303623548
+    Data2: 1287883321
+    Data3: 175521429
+    Data4: -687562884
+  Banks:
+  - {fileID: -4896890727854552552}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 3336
+--- !u!114 &-6317129085475939367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/General Sfx/curse-radio-2
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/General Sfx/curse-radio-2
+  Guid:
+    Data1: 1612474312
+    Data2: 1170603079
+    Data3: 904251786
+    Data4: 1317638373
+  Banks:
+  - {fileID: -6910220195294961778}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 20300
 --- !u!114 &-4896890727854552552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,10 +218,10 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Character SFX.bank
   Name: Character SFX
   StudioPath: bank:/Character SFX
-  lastModified: 639016041226245431
+  lastModified: 639017489513666232
   FileSizes:
   - Name: Desktop
-    Value: 705440
+    Value: 747616
   Exists: 1
 --- !u!114 &-3882742410177109216
 MonoBehaviour:
@@ -188,7 +242,7 @@ MonoBehaviour:
     Data3: -2136200515
     Data4: -1904892123
   Banks:
-  - {fileID: -7253157856568259225}
+  - {fileID: -6910220195294961778}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -211,10 +265,10 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639016041226555475
+  lastModified: 639017489514046580
   FileSizes:
   - Name: Desktop
-    Value: 1624
+    Value: 1856
   Exists: 1
 --- !u!114 &-548577555255307819
 MonoBehaviour:
@@ -281,10 +335,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EventCache
   EditorBanks:
   - {fileID: -1758736953036213874}
-  - {fileID: -7253157856568259225}
   - {fileID: 2625838092753379136}
   - {fileID: -6906092397127869660}
   - {fileID: -4896890727854552552}
+  - {fileID: -6910220195294961778}
   EditorEvents:
   - {fileID: -3882742410177109216}
   - {fileID: -7128726621758503428}
@@ -298,12 +352,17 @@ MonoBehaviour:
   - {fileID: 3269263824920338357}
   - {fileID: -8989092726821698858}
   - {fileID: 3387677231055456615}
+  - {fileID: 6689682616429601869}
+  - {fileID: 6648286181893271286}
+  - {fileID: 5303245683734598770}
+  - {fileID: -6769208719107468984}
+  - {fileID: -6317129085475939367}
   EditorParameters: []
   MasterBanks:
   - {fileID: 2625838092753379136}
   StringsBanks:
   - {fileID: -1758736953036213874}
-  cacheTime: 639016041226755533
+  cacheTime: 639017489514256863
   cacheVersion: 131634
 --- !u!114 &1666999791229151387
 MonoBehaviour:
@@ -374,7 +433,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639016041226535468
+  lastModified: 639017489514031445
   FileSizes:
   - Name: Desktop
     Value: 2172
@@ -433,6 +492,33 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 456
+--- !u!114 &5303245683734598770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/General Sfx/curse-radio-1
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/General Sfx/curse-radio-1
+  Guid:
+    Data1: 721990254
+    Data2: 1131914781
+    Data3: 157332900
+    Data4: 750090538
+  Banks:
+  - {fileID: -6910220195294961778}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 20300
 --- !u!114 &6453247447897130571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,6 +546,60 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 5560
+--- !u!114 &6648286181893271286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/General Sfx/laugh-1
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/General Sfx/laugh-1
+  Guid:
+    Data1: -156213381
+    Data2: 1125644245
+    Data3: -1221065309
+    Data4: 1485625317
+  Banks:
+  - {fileID: -6910220195294961778}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2808
+--- !u!114 &6689682616429601869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/General Sfx/cry-1
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/General Sfx/cry-1
+  Guid:
+    Data1: 413023820
+    Data2: 1075860554
+    Data3: 842365320
+    Data4: 576492551
+  Banks:
+  - {fileID: -6910220195294961778}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 20952
 --- !u!114 &7618531353243270395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,7 +619,7 @@ MonoBehaviour:
     Data3: 1836069277
     Data4: 1241741704
   Banks:
-  - {fileID: -7253157856568259225}
+  - {fileID: -6910220195294961778}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
