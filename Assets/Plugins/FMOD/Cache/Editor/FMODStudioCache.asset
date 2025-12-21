@@ -124,10 +124,10 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/General.bank
   Name: General
   StudioPath: bank:/General
-  lastModified: 639017489514001442
+  lastModified: 639019163170923700
   FileSizes:
   - Name: Desktop
-    Value: 1836224
+    Value: 1862528
   Exists: 1
 --- !u!114 &-6906092397127869660
 MonoBehaviour:
@@ -144,10 +144,10 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639017489514256863
+  lastModified: 639019163171163800
   FileSizes:
   - Name: Desktop
-    Value: 804960
+    Value: 805248
   Exists: 1
 --- !u!114 &-6769208719107468984
 MonoBehaviour:
@@ -218,7 +218,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Character SFX.bank
   Name: Character SFX
   StudioPath: bank:/Character SFX
-  lastModified: 639017489513666232
+  lastModified: 639019163170603627
   FileSizes:
   - Name: Desktop
     Value: 747616
@@ -250,6 +250,33 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 76100
+--- !u!114 &-2544662276122189185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/General Sfx/curse-success-2
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/General Sfx/curse-success-2
+  Guid:
+    Data1: 828204731
+    Data2: 1178016100
+    Data3: 14896061
+    Data4: 1061040959
+  Banks:
+  - {fileID: -6910220195294961778}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1906
 --- !u!114 &-1758736953036213874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,10 +292,10 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639017489514046580
+  lastModified: 639019163170973712
   FileSizes:
   - Name: Desktop
-    Value: 1856
+    Value: 1900
   Exists: 1
 --- !u!114 &-548577555255307819
 MonoBehaviour:
@@ -357,12 +384,13 @@ MonoBehaviour:
   - {fileID: 5303245683734598770}
   - {fileID: -6769208719107468984}
   - {fileID: -6317129085475939367}
+  - {fileID: -2544662276122189185}
   EditorParameters: []
   MasterBanks:
   - {fileID: 2625838092753379136}
   StringsBanks:
   - {fileID: -1758736953036213874}
-  cacheTime: 639017489514256863
+  cacheTime: 639019163171163800
   cacheVersion: 131634
 --- !u!114 &1666999791229151387
 MonoBehaviour:
@@ -433,7 +461,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639017489514031445
+  lastModified: 639019163170953707
   FileSizes:
   - Name: Desktop
     Value: 2172

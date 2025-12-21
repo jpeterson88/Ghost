@@ -247,8 +247,8 @@ MonoBehaviour:
   fadeoutTime: 1
   eventReference:
     Guid:
-      Data1: -1303623548
-      Data2: 1287883321
-      Data3: 175521429
-      Data4: -687562884
-    Path: event:/General Sfx/curse-success
+      Data1: 828204731
+      Data2: 1178016100
+      Data3: 14896061
+      Data4: 1061040959
+    Path: event:/General Sfx/curse-success-2
