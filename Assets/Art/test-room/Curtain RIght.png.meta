@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b97279af30e22474e99445bef447446f
+guid: 52c5aa8fc3277c64bb4c53f2cddfdd6b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7706002169006976291
-    second: Couch_0
+      213: 7047686065105567951
+    second: Curtain RIght_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Couch_0
+      name: Curtain RIght_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 629
-        height: 353
-      alignment: 9
-      pivot: {x: 0.5, y: 0}
+        width: 430
+        height: 524
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dd213fdfad7ce0590800000000000000
-      internalID: -7706002169006976291
+      spriteID: fc0861fc2296ec160800000000000000
+      internalID: 7047686065105567951
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 85f63b3324b6d1f42ae8b2a03d270dbf
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Couch_0: -7706002169006976291
+      Curtain RIght_0: 7047686065105567951
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
