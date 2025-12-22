@@ -55,7 +55,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 3030
---- !u!114 &-8191434212767962369
+--- !u!114 &-7601647972083849174
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,9 +65,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: snapshot:/bring-down
+  m_Name: snapshot:/bring-down-non-sfx
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: snapshot:/bring-down
+  Path: snapshot:/bring-down-non-sfx
   Guid:
     Data1: 265266845
     Data2: 1224186277
@@ -124,10 +124,10 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/General.bank
   Name: General
   StudioPath: bank:/General
-  lastModified: 639019163170923700
+  lastModified: 639020003341218292
   FileSizes:
   - Name: Desktop
-    Value: 1862528
+    Value: 2047520
   Exists: 1
 --- !u!114 &-6906092397127869660
 MonoBehaviour:
@@ -144,10 +144,10 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639019163171163800
+  lastModified: 639020003341528364
   FileSizes:
   - Name: Desktop
-    Value: 805248
+    Value: 1516032
   Exists: 1
 --- !u!114 &-6769208719107468984
 MonoBehaviour:
@@ -203,6 +203,33 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 20300
+--- !u!114 &-5238213069802418577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/eerie-tune-1
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Music/eerie-tune-1
+  Guid:
+    Data1: -151388283
+    Data2: 1171996320
+    Data3: 828573847
+    Data4: -1412319002
+  Banks:
+  - {fileID: -6906092397127869660}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 52741
 --- !u!114 &-4896890727854552552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +245,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Character SFX.bank
   Name: Character SFX
   StudioPath: bank:/Character SFX
-  lastModified: 639019163170603627
+  lastModified: 639020003337857527
   FileSizes:
   - Name: Desktop
     Value: 747616
@@ -250,6 +277,33 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 76100
+--- !u!114 &-3689397091607500548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: snapshot:/bring-down-non-music
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: snapshot:/bring-down-non-music
+  Guid:
+    Data1: 733711888
+    Data2: 1165005627
+    Data3: 1249736122
+    Data4: -956779229
+  Banks:
+  - {fileID: 2625838092753379136}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
 --- !u!114 &-2544662276122189185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,10 +346,10 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639019163170973712
+  lastModified: 639020003341258299
   FileSizes:
   - Name: Desktop
-    Value: 1900
+    Value: 1998
   Exists: 1
 --- !u!114 &-548577555255307819
 MonoBehaviour:
@@ -370,7 +424,6 @@ MonoBehaviour:
   - {fileID: -3882742410177109216}
   - {fileID: -7128726621758503428}
   - {fileID: 2127295826611444562}
-  - {fileID: -8191434212767962369}
   - {fileID: 1666999791229151387}
   - {fileID: 6453247447897130571}
   - {fileID: -40012422467730330}
@@ -385,12 +438,15 @@ MonoBehaviour:
   - {fileID: -6769208719107468984}
   - {fileID: -6317129085475939367}
   - {fileID: -2544662276122189185}
+  - {fileID: -7601647972083849174}
+  - {fileID: -5238213069802418577}
+  - {fileID: -3689397091607500548}
   EditorParameters: []
   MasterBanks:
   - {fileID: 2625838092753379136}
   StringsBanks:
   - {fileID: -1758736953036213874}
-  cacheTime: 639019163171163800
+  cacheTime: 639020003341528364
   cacheVersion: 131634
 --- !u!114 &1666999791229151387
 MonoBehaviour:
@@ -461,10 +517,10 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639019163170953707
+  lastModified: 639020003341248300
   FileSizes:
   - Name: Desktop
-    Value: 2172
+    Value: 2704
   Exists: 1
 --- !u!114 &3269263824920338357
 MonoBehaviour:
@@ -546,7 +602,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 20300
+  Length: 14800
 --- !u!114 &6453247447897130571
 MonoBehaviour:
   m_ObjectHideFlags: 0

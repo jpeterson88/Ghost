@@ -58,7 +58,7 @@ SpriteRenderer:
   m_SmallMeshCulling: 1
   m_ForceMeshLod: -1
   m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 85
   m_Sprite: {fileID: 21300000, guid: c4c548a339b4d41a590928c0c98934a7, type: 3}
-  m_Color: {r: 0.8584906, g: 0, b: 0.66458035, a: 1}
+  m_Color: {r: 0.38679248, g: 0, b: 0.29945233, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -11,7 +11,7 @@ namespace Assets.Scripts.Audio
         [SerializeField] private bool allowOverridePlay = true;
         [SerializeField] private bool playOnAwake;
 
-        private EventInstance instance;
+        private EventInstance instance, snapShotInstance;
         private float currentParamValue;
 
         private void Awake()
@@ -37,6 +37,18 @@ namespace Assets.Scripts.Audio
         {
             FMOD.Studio.STOP_MODE stopMode = withFade ? FMOD.Studio.STOP_MODE.ALLOWFADEOUT : FMOD.Studio.STOP_MODE.IMMEDIATE;
             instance.stop(stopMode);
+        }
+
+        public void StartSnapshot(string snapshotName)
+        {
+            snapShotInstance = FMODUnity.RuntimeManager.CreateInstance($"snapshot:/{snapshotName}");
+            snapShotInstance.start();
+        }
+
+        public void StopSnapshot(string snapshotName)
+        {
+            snapShotInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            snapShotInstance.release();
         }
 
         public bool IsPlaying()

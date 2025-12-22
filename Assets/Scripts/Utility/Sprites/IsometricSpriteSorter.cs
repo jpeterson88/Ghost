@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Utility.Sprites
 {
-    [ExecuteInEditMode]
+    //[ExecuteInEditMode]
     internal class IsometricSpriteSorter : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer spriteRenderer;
