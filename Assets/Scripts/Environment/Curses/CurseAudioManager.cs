@@ -28,8 +28,8 @@ namespace Assets.Scripts.Environment.Curses
 
             if (activeCurses >= curseCountBeforePlay && !audioController.IsPlaying())
             {
-                //if(snapshotName != null)
-                //    audioController.StartSnapshot(snapshotName);
+                if(snapshotName != null)
+                    audioController.StartSnapshot(snapshotName);
                 audioController.PlayOneShot();
             }
         }
@@ -42,8 +42,8 @@ namespace Assets.Scripts.Environment.Curses
             {
                 audioController.Stop();
 
-                //if(snapshotName != null)
-                //    audioController.StopSnapshot(snapshotName);
+                if(snapshotName != null)
+                    audioController.StopSnapshot(snapshotName);
             }
         }
     }
