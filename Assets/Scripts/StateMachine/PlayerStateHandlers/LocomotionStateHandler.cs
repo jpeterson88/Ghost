@@ -11,7 +11,7 @@ namespace Assets.Scripts.State.StateHandlers
 {
     class LocomotionStateHandler : StateHandlerBase
     {
-        [SerializeField] private PlayerStates idleState, spook1State, castCurseState;
+        [SerializeField] private PlayerStates idleState, spook1State, castCurseState, dashState;
         [SerializeField] private Rigidbody2D rb2d;
         [SerializeField] private AnimationReferenceAsset right, left, upward, downward, idleLeft, idleRight;
         [SerializeField] private SpineSkeletonAnimationHandle animationHandler;
@@ -36,9 +36,10 @@ namespace Assets.Scripts.State.StateHandlers
             if (IsInCurrentHandlerState())
             {
                 if (Input.GetKeyDown(KeyCode.Space))                
-                    SetState(spook1State);                
+                    SetState(dashState);                
                 else if (Input.GetKeyDown(KeyCode.R) && curseController.CanCurse())
                     SetState(castCurseState);
+                
             }
         }
 

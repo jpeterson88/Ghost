@@ -5116,6 +5116,7 @@ MonoBehaviour:
   idleState: 0
   spook1State: 2
   castCurseState: 3
+  dashState: 4
   rb2d: {fileID: 5955428198235959819}
   right: {fileID: 11400000, guid: dbed449e8f20eff4190ad818a2111d91, type: 2}
   left: {fileID: 11400000, guid: dfb3b88834a0f9147a1d542945fb5972, type: 2}
@@ -5280,6 +5281,7 @@ Transform:
   - {fileID: 2013202288271622956}
   - {fileID: 1053575428043350348}
   - {fileID: 1549862107650190677}
+  - {fileID: 2897389736461989611}
   m_Father: {fileID: 420635036366551625}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4279606893439974381
@@ -5372,7 +5374,7 @@ MeshRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -105
+  m_SortingOrder: -307
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &3490395821183227526
 MonoBehaviour:
@@ -10548,6 +10550,62 @@ MonoBehaviour:
       Data3: -1676811086
       Data4: -1783602470
     Path: event:/Ghost/movement
+--- !u!1 &4801638747619062239
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6044755971273769653}
+  - component: {fileID: 1770237493887599724}
+  m_Layer: 0
+  m_Name: Dash State Handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6044755971273769653
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801638747619062239}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6111063862665223537}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1770237493887599724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801638747619062239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d92e45f321ae84c9b7415132ae0457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.StateMachine.PlayerStateHandlers.DashStateHandler
+  canHandleStates: 04000000
+  animationHandler: {fileID: 490000567640868241}
+  dashLeftAnimation: {fileID: 11400000, guid: dfb3b88834a0f9147a1d542945fb5972, type: 2}
+  dashRightAnimation: {fileID: 11400000, guid: dbed449e8f20eff4190ad818a2111d91, type: 2}
+  audioController: {fileID: 1243950248429711231}
+  rb2d: {fileID: 5955428198235959819}
+  facingDirectionController: {fileID: 2201487174393855563}
+  crashState: 0
+  idleState: 0
+  castUtility: {fileID: 0}
+  dashForce: 20
+  stopMagnitude: 1.5
 --- !u!1 &4937730337824063451
 GameObject:
   m_ObjectHideFlags: 0
@@ -10806,7 +10864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.State.StateHandlers.IdleStateHandler
   canHandleStates: 00000000
   locomotionState: 1
-  spook1State: 2
+  dashState: 4
   castCurseState: 3
   rb2d: {fileID: 5955428198235959819}
   idleLeft: {fileID: 11400000, guid: 91e5fad5a391eca4a9bbd638e5b1c306, type: 2}
@@ -10970,6 +11028,56 @@ MonoBehaviour:
   actionScript: {fileID: 11400000, guid: 809839a5bbe41ff4f8390d1f8bed1892, type: 2}
   spriteRenderer: {fileID: 5007002284202614087}
   fadeDuration: 0.6
+--- !u!1 &6819611448444457698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2897389736461989611}
+  - component: {fileID: 4327183385243375547}
+  m_Layer: 0
+  m_Name: Dash Collide Detection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2897389736461989611
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6819611448444457698}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.1, y: 0.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 937727403100958039}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4327183385243375547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6819611448444457698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ffae841df022d42bab5f7845c1836e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Utility.RayCasts.BoxCaster
+  directionController: {fileID: 2201487174393855563}
+  castLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  boxSize: {x: 0.25, y: 1.95}
+  boxCastDistance: 1.46
 --- !u!1 &6860161389203834319
 GameObject:
   m_ObjectHideFlags: 0
@@ -11099,6 +11207,7 @@ Transform:
   - {fileID: 712765614369265919}
   - {fileID: 846481888899483375}
   - {fileID: 8478614183286625350}
+  - {fileID: 6044755971273769653}
   m_Father: {fileID: 420635036366551625}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6288647022419262877

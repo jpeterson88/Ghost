@@ -6,5 +6,6 @@
         Locomotion = 1,
         Spook1 = 2,
         CastCurse = 3,
+        Dash= 4,
     }
 }
