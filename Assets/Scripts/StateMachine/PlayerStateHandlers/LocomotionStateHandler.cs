@@ -15,14 +15,15 @@ namespace Assets.Scripts.State.StateHandlers
         [SerializeField] private Rigidbody2D rb2d;
         [SerializeField] private AnimationReferenceAsset right, left, upward, downward, idleLeft, idleRight;
         [SerializeField] private SpineSkeletonAnimationHandle animationHandler;
-        [SerializeField] private float stopMagnitude = 1.5f;
+        
         [SerializeField] private FacingDirection directionUtility;
         [SerializeField] private UncachedAudioController audioController;
         [SerializeField] private CastCurseController curseController;
+        [SerializeField] private GhostMovement movementController;
+        [SerializeField] private float stopMagnitude = 1.5f;
 
         private TrackEntry currentIdleTrack;
         private TrackEntry currentMovementTrack;
-
         internal override void OnEnter(int state)
         {
             base.OnEnter(state);
@@ -39,7 +40,6 @@ namespace Assets.Scripts.State.StateHandlers
                     SetState(dashState);                
                 else if (Input.GetKeyDown(KeyCode.R) && curseController.CanCurse())
                     SetState(castCurseState);
-                
             }
         }
 
@@ -48,10 +48,10 @@ namespace Assets.Scripts.State.StateHandlers
         internal override void OnFixedUpdate()
         {
             base.OnFixedUpdate();
-
-
+            
             if (IsInCurrentHandlerState())
             {
+                movementController.ApplyMovement();
                 Direction direction = GetMoveDirection(GetInputVector());
 
                 PlayDirectionalMovementAnimation(direction);

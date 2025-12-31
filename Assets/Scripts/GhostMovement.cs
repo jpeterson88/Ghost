@@ -1,64 +1,62 @@
 using Assets.Scripts.StateMachine;
 using Assets.Scripts.StateMachine.Enums;
+using NUnit.Framework;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class GhostMovement : MonoBehaviour
 {
+    [SerializeField] private PlayerStateMachine stateMachine;
+    [SerializeField] private List<PlayerStates> movementStates;
     public float acceleration = 8f;
     public float maxSpeed = 5f;
     public float drag = 4f;
-    [SerializeField] private PlayerStateMachine stateMachine;
+    
 
-    private Vector2 velocity = Vector2.zero;
     private Rigidbody2D rb;
-
+    Vector2 movementVector;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    public Vector2 ApplyMovement()
     {
-        var currentState = (PlayerStates)stateMachine.GetCurrentState();
-        if (currentState == PlayerStates.Locomotion || currentState == PlayerStates.Idle)
-        {
-            // Get input
-            float inputX = Input.GetAxisRaw("Horizontal");
-            float inputY = Input.GetAxisRaw("Vertical");
-            Vector2 input = new Vector2(inputX, inputY);
+        float inputX = Input.GetAxisRaw("Horizontal");
+        float inputY = Input.GetAxisRaw("Vertical");
+        Vector2 input = new Vector2(inputX, inputY);
+        
+        // Normalize input only if it's not zero to maintain consistent speed
+        if (input.magnitude > 1)
+            input.Normalize();
 
-            // Normalize input only if it's not zero to maintain consistent speed
-            if (input.magnitude > 1)
-            {
-                input.Normalize();
-            }
+        // Accelerate towards input direction
+        if (input.magnitude > 0)        
+            movementVector += input * acceleration * Time.deltaTime;
+        
+        else        
+            // Apply drag when no input
+            movementVector = Vector2.Lerp(movementVector, Vector2.zero, drag * Time.deltaTime);
+        
 
-            // Accelerate towards input direction
-            if (input.magnitude > 0)
-            {
-                velocity += input * acceleration * Time.deltaTime;
-            }
-            else
-            {
-                // Apply drag when no input
-                velocity = Vector2.Lerp(velocity, Vector2.zero, drag * Time.deltaTime);
-            }
+        // Clamp velocity to max speed
+        movementVector = Vector2.ClampMagnitude(movementVector, maxSpeed);
 
-            // Clamp velocity to max speed
-            velocity = Vector2.ClampMagnitude(velocity, maxSpeed);
-        }
-        //else
-        //{
-        //    velocity = Vector2.zero;
-        //}
+        rb.linearVelocity = movementVector;
 
+        return movementVector;
     }
 
-    void FixedUpdate()
+    private void Update()
     {
-        var currentState = (PlayerStates)stateMachine.GetCurrentState();
-        if (currentState == PlayerStates.Locomotion || currentState == PlayerStates.Idle)
-            rb.linearVelocity = velocity;
+        // Set to Zero for states we are not supposed to be moving in
+        if (!movementStates.Contains(stateMachine.GetPlayerStateEnum()) && (rb.linearVelocity != Vector2.zero || movementVector != Vector2.zero))
+        {
+            movementVector = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
+        }
+        
     }
 }

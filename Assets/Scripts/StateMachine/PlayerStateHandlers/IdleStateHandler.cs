@@ -14,7 +14,7 @@ namespace Assets.Scripts.State.StateHandlers
         [SerializeField] private SpineSkeletonAnimationHandle animationHandler;
         [SerializeField] private FacingDirection facingDirection;
         [SerializeField] private CastCurseController curseController;
-
+        [SerializeField] private GhostMovement movementController;
         internal override void OnEnter(int state)
         {
             base.OnEnter(state);
@@ -52,6 +52,7 @@ namespace Assets.Scripts.State.StateHandlers
 
             if (IsInCurrentHandlerState()) 
             {
+                movementController.ApplyMovement();
                 float inputX = Input.GetAxisRaw("Horizontal");
                 float inputY = Input.GetAxisRaw("Vertical");
 
