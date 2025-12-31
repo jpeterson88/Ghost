@@ -14,7 +14,6 @@ namespace Assets.Scripts.Utility
             currentFacing = startFacingLeft ? FacingDirectionEnum.Left : FacingDirectionEnum.Right;
         }
 
-
         public FacingDirectionEnum GetCurrentFacing()
         {
             return currentFacing;

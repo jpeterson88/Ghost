@@ -1,9 +1,11 @@
 ﻿using Assets.Scripts.Audio;
 using Assets.Scripts.Ghost;
+using Assets.Scripts.Input;
 using Assets.Scripts.StateMachine;
 using Assets.Scripts.StateMachine.Enums;
 using Assets.Scripts.Utility;
 using Spine.Unity;
+using System;
 using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -19,15 +21,30 @@ namespace Assets.Scripts.State.StateHandlers
         [SerializeField] private CachedAudioController audioController;
         [SerializeField] private CameraPriorityUtility cameraPriorityUtility;
         [SerializeField] private CinemachineCamera main, close;
-        
         [SerializeField] private string castCurseSkinName, normalSkinName;
         [SerializeField] private float castTime, animationPlaybackSpeed = 1f, waitToSetSkinOnExit = .5f;
         
 
         private float currentElapsed;
+        private IInput input;
+        private bool curseReleased;
+
+        private void Awake()
+        {
+            input = transform.root.GetComponent<IInput>();
+
+            input.CurseReleased += HandleCurseReleased;
+        }
+
+        private void HandleCurseReleased()
+        {
+            if(IsInCurrentHandlerState())
+                curseReleased = true;
+        }
+
         internal override void OnEnter(int state)
         {
-            base.OnEnter(state);
+            base.OnEnter(state);            
 
             curseController.StartCurse();
             animationHandler.SetSkin(castCurseSkinName);
@@ -50,23 +67,12 @@ namespace Assets.Scripts.State.StateHandlers
                     curseController.CastSuccessfulCurse();
                     SetState(idleState);
                 }
-                else if (Input.GetKeyUp(KeyCode.R))
+                else if (curseReleased)
                 {
                     curseController.EndCurse();
                     SetState(idleState);
                 }
             }
-        }
-
-
-        internal override void OnExit()
-        {
-            base.OnExit();
-            animationHandler.ClearTrack(1);
-            curseController.StartCooldown();
-            audioController.Stop();
-
-            StartCoroutine(WaitToSetSkin());
         }
 
         // TODO: Move this to maybe a GhostSkinHandler
@@ -75,6 +81,20 @@ namespace Assets.Scripts.State.StateHandlers
             cameraPriorityUtility.SwitchCameras(main);
             yield return new WaitForSeconds(waitToSetSkinOnExit);
             animationHandler.SetSkin(normalSkinName);
+        }
+
+        private void OnDisable() => input.CurseReleased -= HandleCurseReleased;
+
+        internal override void OnExit()
+        {
+            base.OnExit();
+            curseReleased = false;
+
+            animationHandler.ClearTrack(1);
+            curseController.StartCooldown();
+            audioController.Stop();
+
+            StartCoroutine(WaitToSetSkin());
         }
     }
 }

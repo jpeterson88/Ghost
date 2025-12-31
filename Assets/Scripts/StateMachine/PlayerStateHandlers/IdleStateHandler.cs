@@ -1,8 +1,10 @@
 ﻿using Assets.Scripts.Ghost;
+using Assets.Scripts.Input;
 using Assets.Scripts.StateMachine;
 using Assets.Scripts.StateMachine.Enums;
 using Assets.Scripts.Utility;
 using Spine.Unity;
+using System;
 using UnityEngine;
 
 namespace Assets.Scripts.State.StateHandlers
@@ -15,6 +17,29 @@ namespace Assets.Scripts.State.StateHandlers
         [SerializeField] private FacingDirection facingDirection;
         [SerializeField] private CastCurseController curseController;
         [SerializeField] private GhostMovement movementController;
+
+        private IInput input;
+
+        private void Awake()
+        {
+            input = transform.root.GetComponent<IInput>();
+
+            input.CursePressed += HandleCuresePressed;
+            input.DashPressed += HandleDashPressed;
+        }
+
+        private void HandleDashPressed()
+        {
+            if (IsInCurrentHandlerState())
+                SetState(dashState);
+        }
+
+        private void HandleCuresePressed()
+        {
+            if (IsInCurrentHandlerState() && curseController.CanCurse())
+                SetState(castCurseState);
+        }
+
         internal override void OnEnter(int state)
         {
             base.OnEnter(state);
@@ -33,19 +58,6 @@ namespace Assets.Scripts.State.StateHandlers
             }
         }
 
-        internal override void OnUpdate()
-        {
-            base.OnUpdate();
-
-            if (IsInCurrentHandlerState())
-            {
-                if (Input.GetKeyDown(KeyCode.Space))
-                    SetState(dashState);
-                else if (Input.GetKeyDown(KeyCode.R) && curseController.CanCurse())
-                    SetState(castCurseState);
-            }
-        }
-
         internal override void OnFixedUpdate()
         {
             base.OnFixedUpdate();
@@ -53,10 +65,8 @@ namespace Assets.Scripts.State.StateHandlers
             if (IsInCurrentHandlerState()) 
             {
                 movementController.ApplyMovement();
-                float inputX = Input.GetAxisRaw("Horizontal");
-                float inputY = Input.GetAxisRaw("Vertical");
 
-                if (inputX != 0 || inputY != 0)
+                if (input.GetMoveVector() != Vector2.zero)
                     SetState(locomotionState);
             }                
         }
@@ -64,6 +74,12 @@ namespace Assets.Scripts.State.StateHandlers
         internal override void OnExit()
         {
             base.OnExit();
+        }
+
+        private void OnDisable()
+        {
+            input.CursePressed -= HandleCuresePressed;
+            input.DashPressed -= HandleDashPressed;
         }
     }
 }

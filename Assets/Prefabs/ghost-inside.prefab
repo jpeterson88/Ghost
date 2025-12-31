@@ -11502,6 +11502,8 @@ GameObject:
   - component: {fileID: 5955428198235959819}
   - component: {fileID: 3408457519836916886}
   - component: {fileID: 5208538865263735592}
+  - component: {fileID: 735823437317391784}
+  - component: {fileID: 8377022617814587371}
   m_Layer: 6
   m_Name: ghost-inside
   m_TagString: Untagged
@@ -11628,3 +11630,93 @@ CapsuleCollider2D:
   m_Offset: {x: 0.04, y: 0.27}
   m_Size: {x: 1.34, y: 0.98}
   m_Direction: 1
+--- !u!114 &735823437317391784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8383809045440058379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3c37dba73a8954ca860a39738b401b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Input.PlayerInputMap
+--- !u!114 &8377022617814587371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8383809045440058379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 792797337a0e5864389719b6f8b7b631, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 735823437317391784}
+        m_TargetAssemblyTypeName: Assets.Scripts.Input.PlayerInputMap, Assembly-CSharp
+        m_MethodName: SetMoveVector
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6fca9d08-668b-400a-8977-195d72ebfb8e
+    m_ActionName: 'Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 735823437317391784}
+        m_TargetAssemblyTypeName: Assets.Scripts.Input.PlayerInputMap, Assembly-CSharp
+        m_MethodName: OnCursePressed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3d45720c-1424-4d68-9d0e-4ee8f1f20800
+    m_ActionName: 'Player/Curse[/Keyboard/r]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 735823437317391784}
+        m_TargetAssemblyTypeName: Assets.Scripts.Input.PlayerInputMap, Assembly-CSharp
+        m_MethodName: OnDashPressed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7a9c3faf-c6ab-4391-96ae-141d039ee68a
+    m_ActionName: Player/Dash
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: ce90dad7-428c-4834-9cc9-fd1460ecb323
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}

@@ -19,11 +19,11 @@ namespace Assets.Scripts.Utility.Triggers
             Debug.Log("Ghost enter");
         }
 
-        private void Update()
-        {
-            if (isInTrigger && Input.GetKeyDown(KeyCode.E))
-                triggerLight?.Invoke(lightSourceEnum);
-        }
+        //private void Update()
+        //{
+        //    if (isInTrigger && Input.GetKeyDown(KeyCode.E))
+        //        triggerLight?.Invoke(lightSourceEnum);
+        //}
 
         private void OnTriggerExit2D(Collider2D collision)
         {

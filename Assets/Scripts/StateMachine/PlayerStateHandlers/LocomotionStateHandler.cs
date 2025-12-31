@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Audio;
 using Assets.Scripts.Ghost;
+using Assets.Scripts.Input;
 using Assets.Scripts.StateMachine;
 using Assets.Scripts.StateMachine.Enums;
 using Assets.Scripts.Utility;
@@ -24,25 +25,33 @@ namespace Assets.Scripts.State.StateHandlers
 
         private TrackEntry currentIdleTrack;
         private TrackEntry currentMovementTrack;
+        private IInput input;
+
+        private void Awake()
+        {
+            input = transform.root.GetComponent<IInput>();
+
+            input.CursePressed += HandleCuresePressed;
+            input.DashPressed += HandleDashPressed;
+        }
+
+        private void HandleDashPressed()
+        {
+            if (IsInCurrentHandlerState())
+                SetState(dashState);
+        }
+
+        private void HandleCuresePressed()
+        {
+            if (IsInCurrentHandlerState() && curseController.CanCurse())
+                SetState(castCurseState);
+        }
+
         internal override void OnEnter(int state)
         {
             base.OnEnter(state);
             audioController.Play();
         }
-
-        internal override void OnUpdate()
-        {
-            base.OnUpdate();
-
-            if (IsInCurrentHandlerState())
-            {
-                if (Input.GetKeyDown(KeyCode.Space))                
-                    SetState(dashState);                
-                else if (Input.GetKeyDown(KeyCode.R) && curseController.CanCurse())
-                    SetState(castCurseState);
-            }
-        }
-
 
 
         internal override void OnFixedUpdate()
@@ -52,47 +61,11 @@ namespace Assets.Scripts.State.StateHandlers
             if (IsInCurrentHandlerState())
             {
                 movementController.ApplyMovement();
-                Direction direction = GetMoveDirection(GetInputVector());
+                Direction direction = GetMoveDirection(input.GetMoveVector());
 
                 PlayDirectionalMovementAnimation(direction);
                 if (rb2d.linearVelocity.magnitude < stopMagnitude)
                     SetState(idleState);
-            }
-        }
-
-        private void PlayDirectionalIdleAnimation(Direction direction, bool playBothTracks)
-        {
-            FacingDirectionEnum facingDirection = directionUtility.GetCurrentFacing();
-
-            
-
-            if (currentIdleTrack != null)
-            {             
-                if (facingDirection == FacingDirectionEnum.Left && currentIdleTrack.Animation.Name != idleLeft.name)
-                {
-                    currentIdleTrack = animationHandler.PlayAnimationReference(idleLeft, 0, false, true);
-
-                    if (playBothTracks)
-                    {
-                        animationHandler.ClearTrack(1);
-                        currentIdleTrack = animationHandler.PlayAnimationReference(idleLeft, 1, false, true);
-                    }
-                }
-                else if (facingDirection == FacingDirectionEnum.Right && currentIdleTrack.Animation.Name != idleRight.name)
-                {
-                    currentIdleTrack = animationHandler.PlayAnimationReference(idleRight, 0, false, true);
-
-                    if(playBothTracks)
-                    {
-                        animationHandler.ClearTrack(1);
-                        animationHandler.PlayAnimationReference(idleLeft, 1, false, true);
-                    }
-                }
-            }
-            else
-            {
-                AnimationReferenceAsset directionalIdle = facingDirection == FacingDirectionEnum.Left ? idleLeft : idleRight;
-                currentIdleTrack = animationHandler.PlayAnimationReference(directionalIdle, 0, false, true);
             }
         }
 
@@ -121,16 +94,6 @@ namespace Assets.Scripts.State.StateHandlers
                 currentMovementTrack = animationHandler.PlayAnimationReference(downward, 1, false, true);
             }
         }
-
-        private Vector2 GetInputVector()
-        {
-            float inputX = Input.GetAxisRaw("Horizontal");
-            float inputY = Input.GetAxisRaw("Vertical");
-            Vector2 input = new Vector2(inputX, inputY);
-
-            return input;
-        }
-
 
 
         private Direction GetMoveDirection(Vector2 input)
@@ -176,6 +139,12 @@ namespace Assets.Scripts.State.StateHandlers
             base.OnExit();
             //animationHandler.ClearTrack(1);
             audioController.Stop(true);
+        }
+
+        private void OnDisable()
+        {
+            input.CursePressed -= HandleCuresePressed;
+            input.DashPressed -= HandleDashPressed;
         }
     }
 }

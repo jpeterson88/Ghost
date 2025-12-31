@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Audio;
+using Assets.Scripts.Input;
 using Assets.Scripts.StateMachine.Enums;
 using Assets.Scripts.Utility;
 using Assets.Scripts.Utility.RayCasts;
@@ -26,6 +27,9 @@ namespace Assets.Scripts.StateMachine.PlayerStateHandlers
         private Vector2 dashDirection;
         private float dashTimer;
         private float startDamping;
+        private IInput input;
+
+        private void Awake() => input = transform.root.GetComponent<IInput>();
 
         internal override void OnEnter(int state)
         {
@@ -36,7 +40,8 @@ namespace Assets.Scripts.StateMachine.PlayerStateHandlers
             if (currentVelocity.magnitude >= minVelocityForDirection)
             {
                 // Normalize the velocity to get the dash direction
-                dashDirection = currentVelocity.normalized;
+                dashDirection = input.GetMoveVector().normalized;
+                Debug.Log($"Dash Vector {input.GetMoveVector().normalized}");
             }
             else
             {
@@ -71,8 +76,10 @@ namespace Assets.Scripts.StateMachine.PlayerStateHandlers
         private void PlayDirectionalAnimation()
         {
             AnimationReferenceAsset animation = dashRightAnimation;
-            if (dashDirection == Vector2.left)
+            if (dashDirection.x < 0)
                 animation = dashLeftAnimation;
+            else if (dashDirection.x > 0)
+                animation = dashRightAnimation;
             else if (dashDirection == Vector2.up)
                 animation = dashUpAnimation;
             else if (dashDirection == Vector2.down)
