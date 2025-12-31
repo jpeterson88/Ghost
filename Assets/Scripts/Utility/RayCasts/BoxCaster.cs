@@ -32,17 +32,10 @@ namespace Assets.Scripts.Utility.RayCasts
 
         private void OnDrawGizmos()
         {
+            var hit = Cast();
             Vector2 origin = transform.position;
-            Vector2 direction = directionalDashVector.normalized;
 
-            RaycastHit2D hit = Physics2D.BoxCast(
-                origin,
-                boxSize,
-                0f, // No rotation for the box
-                direction,
-                boxCastDistance,
-                castLayer
-            );
+            Vector2 direction = directionalDashVector.normalized;
 
             Gizmos.color = hit.collider != null ? Color.red : Color.green;
 

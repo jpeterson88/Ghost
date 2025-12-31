@@ -2,7 +2,6 @@
 using Assets.Scripts.StateMachine.Enums;
 using Assets.Scripts.Utility;
 using Assets.Scripts.Utility.RayCasts;
-using Mono.Cecil;
 using Spine.Unity;
 using UnityEngine;
 
@@ -20,62 +19,74 @@ namespace Assets.Scripts.StateMachine.PlayerStateHandlers
         [SerializeField] private BoxCaster castUtility;
 
         [Header("Dash Settings")]
-        [SerializeField] private float dashForce = 20f;
-        [SerializeField] private float stopMagnitude = 1.5f;
-        
-        
-        
+        [SerializeField] private float dashSpeed = 14f;
+        [SerializeField] private float dashDuration = 0.2f;
 
-        private bool isDashing;
-        private Vector2 directionalDashVector;
+        private Vector2 dashDirection;
+        private float dashTimer;
+        private float startDamping;
 
         internal override void OnEnter(int state)
         {
             base.OnEnter(state);
 
-            var facingDirection = facingDirectionController.GetCurrentFacing();
-            var animation = facingDirection == FacingDirectionEnum.Left ? dashLeftAnimation : dashRightAnimation;
-            directionalDashVector = facingDirection == FacingDirectionEnum.Left ? Vector2.left : Vector2.right;
+            var facing = facingDirectionController.GetCurrentFacing();
+            dashDirection = facing == FacingDirectionEnum.Left ? Vector2.left : Vector2.right;
+
+            var animation = facing == FacingDirectionEnum.Left
+                ? dashLeftAnimation
+                : dashRightAnimation;
 
             animationHandler.PlayAnimationReference(animation, 1, false, true);
 
+            startDamping = rb2d.linearDamping;
+
+            // Prepare rigidbody for dash
             rb2d.linearVelocity = Vector2.zero;
-            rb2d.AddForce(directionalDashVector.normalized * dashForce, ForceMode2D.Impulse);
-            isDashing = true;
+            rb2d.linearDamping = 0f;
+
+            dashTimer = dashDuration;
+
+            // Apply dash immediately
+            rb2d.linearVelocity = dashDirection * dashSpeed;
+            audioController.PlayOneShot();
         }
 
-        internal override void OnUpdate()
+        internal override void OnFixedUpdate()
         {
-            base.OnUpdate();
+            base.OnFixedUpdate();
 
-            if (!isDashing || !IsInCurrentHandlerState())
+            if (!IsInCurrentHandlerState())
                 return;
 
-            if (rb2d.linearVelocity.magnitude < stopMagnitude)                
+            dashTimer -= Time.fixedDeltaTime;
+
+            // Maintain constant dash velocity
+            rb2d.linearVelocity = dashDirection * dashSpeed;
+
+            // Collision check
+            var castResult = castUtility.Cast();
+            if (castResult.collider != null)
             {
-                SetState(idleState);
+                rb2d.linearVelocity = Vector2.zero;
+                SetState(crashState);
+                return;
             }
-            else
+
+            // Dash finished
+            if (dashTimer <= 0f)
             {
-                var castResult = castUtility.Cast();
-
-                // We collide with something
-                if (castResult.collider != null)
-                {
-                    rb2d.linearVelocity = Vector2.zero;
-
-                    if (IsInCurrentHandlerState())
-                        SetState(crashState);
-                }
+                rb2d.linearVelocity = Vector2.zero;
+                SetState(idleState);
             }
         }
 
         internal override void OnExit()
         {
             base.OnExit();
-            isDashing = false;
+
+            rb2d.linearDamping = startDamping;
+            dashTimer = 0f;
         }
-
-
     }
 }

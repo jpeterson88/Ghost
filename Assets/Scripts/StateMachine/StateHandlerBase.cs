@@ -57,5 +57,8 @@ namespace Assets.Scripts.StateMachine
         internal virtual void OnUpdate()
         {
         }
+
+        [ContextMenu("Exit State")]
+        public void SetState() => SetState(PlayerStates.Idle);
     }
 }

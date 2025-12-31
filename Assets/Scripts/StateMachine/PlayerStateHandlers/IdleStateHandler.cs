@@ -10,7 +10,6 @@ namespace Assets.Scripts.State.StateHandlers
     class IdleStateHandler : StateHandlerBase
     {
         [SerializeField] private PlayerStates locomotionState, dashState, castCurseState;
-        [SerializeField] private Rigidbody2D rb2d;
         [SerializeField] private AnimationReferenceAsset idleLeft, idleRight;
         [SerializeField] private SpineSkeletonAnimationHandle animationHandler;
         [SerializeField] private FacingDirection facingDirection;

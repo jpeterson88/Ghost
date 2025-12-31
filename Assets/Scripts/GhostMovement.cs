@@ -48,15 +48,17 @@ public class GhostMovement : MonoBehaviour
             // Clamp velocity to max speed
             velocity = Vector2.ClampMagnitude(velocity, maxSpeed);
         }
-        else
-        {
-            velocity = Vector2.zero;
-        }
+        //else
+        //{
+        //    velocity = Vector2.zero;
+        //}
 
     }
 
     void FixedUpdate()
     {
-        rb.linearVelocity = velocity;
+        var currentState = (PlayerStates)stateMachine.GetCurrentState();
+        if (currentState == PlayerStates.Locomotion || currentState == PlayerStates.Idle)
+            rb.linearVelocity = velocity;
     }
 }

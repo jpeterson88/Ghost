@@ -124,7 +124,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/General.bank
   Name: General
   StudioPath: bank:/General
-  lastModified: 639020772688500315
+  lastModified: 639027071781574756
   FileSizes:
   - Name: Desktop
     Value: 2047520
@@ -144,7 +144,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639020772688777092
+  lastModified: 639027071781904833
   FileSizes:
   - Name: Desktop
     Value: 1516032
@@ -245,10 +245,10 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Character SFX.bank
   Name: Character SFX
   StudioPath: bank:/Character SFX
-  lastModified: 639020772688171364
+  lastModified: 639027071781164620
   FileSizes:
   - Name: Desktop
-    Value: 747616
+    Value: 771936
   Exists: 1
 --- !u!114 &-3882742410177109216
 MonoBehaviour:
@@ -346,10 +346,10 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639020772688550311
+  lastModified: 639027071781634774
   FileSizes:
   - Name: Desktop
-    Value: 1998
+    Value: 2036
   Exists: 1
 --- !u!114 &-548577555255307819
 MonoBehaviour:
@@ -441,12 +441,13 @@ MonoBehaviour:
   - {fileID: -7601647972083849174}
   - {fileID: -5238213069802418577}
   - {fileID: -3689397091607500548}
+  - {fileID: 7178888685843035108}
   EditorParameters: []
   MasterBanks:
   - {fileID: 2625838092753379136}
   StringsBanks:
   - {fileID: -1758736953036213874}
-  cacheTime: 639020772688777092
+  cacheTime: 639027071781904833
   cacheVersion: 131634
 --- !u!114 &1666999791229151387
 MonoBehaviour:
@@ -517,7 +518,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639020772688530308
+  lastModified: 639027071781614765
   FileSizes:
   - Name: Desktop
     Value: 2704
@@ -684,6 +685,33 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 20952
+--- !u!114 &7178888685843035108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ghost/inhale
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Ghost/inhale
+  Guid:
+    Data1: -760618544
+    Data2: 1085497576
+    Data3: -299174779
+    Data4: -1830190547
+  Banks:
+  - {fileID: -4896890727854552552}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2040
 --- !u!114 &7618531353243270395
 MonoBehaviour:
   m_ObjectHideFlags: 0

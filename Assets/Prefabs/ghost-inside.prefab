@@ -10598,14 +10598,14 @@ MonoBehaviour:
   animationHandler: {fileID: 490000567640868241}
   dashLeftAnimation: {fileID: 11400000, guid: dfb3b88834a0f9147a1d542945fb5972, type: 2}
   dashRightAnimation: {fileID: 11400000, guid: dbed449e8f20eff4190ad818a2111d91, type: 2}
-  audioController: {fileID: 1243950248429711231}
+  audioController: {fileID: 4347987297066311351}
   rb2d: {fileID: 5955428198235959819}
   facingDirectionController: {fileID: 2201487174393855563}
   crashState: 0
   idleState: 0
-  castUtility: {fileID: 0}
-  dashForce: 20
-  stopMagnitude: 1.5
+  castUtility: {fileID: 4327183385243375547}
+  dashSpeed: 10
+  dashDuration: 0.4
 --- !u!1 &4937730337824063451
 GameObject:
   m_ObjectHideFlags: 0
@@ -10866,7 +10866,6 @@ MonoBehaviour:
   locomotionState: 1
   dashState: 4
   castCurseState: 3
-  rb2d: {fileID: 5955428198235959819}
   idleLeft: {fileID: 11400000, guid: 91e5fad5a391eca4a9bbd638e5b1c306, type: 2}
   idleRight: {fileID: 11400000, guid: 4c5b8fa60dd2aa54799d004bcd99b0e9, type: 2}
   animationHandler: {fileID: 490000567640868241}
@@ -11054,7 +11053,7 @@ Transform:
   m_GameObject: {fileID: 6819611448444457698}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 0.75, z: 0}
+  m_LocalPosition: {x: 0, y: 0.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11076,8 +11075,8 @@ MonoBehaviour:
   castLayer:
     serializedVersion: 2
     m_Bits: 256
-  boxSize: {x: 0.25, y: 1.95}
-  boxCastDistance: 1.46
+  boxSize: {x: 0.1, y: 0.74}
+  boxCastDistance: 0.88
 --- !u!1 &6860161389203834319
 GameObject:
   m_ObjectHideFlags: 0
@@ -11113,6 +11112,7 @@ Transform:
   - {fileID: 5838653554220146609}
   - {fileID: 5071901630941352982}
   - {fileID: 5983174918883654186}
+  - {fileID: 1191213216860149970}
   m_Father: {fileID: 420635036366551625}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7501999772372642181
@@ -11226,6 +11226,59 @@ MonoBehaviour:
   setStateOnFirstFrameUpdate: 1
   startingState: 0
   enableLogs: 0
+--- !u!1 &7836587140479148759
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1191213216860149970}
+  - component: {fileID: 4347987297066311351}
+  m_Layer: 0
+  m_Name: dash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1191213216860149970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836587140479148759}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3999716675830340308}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4347987297066311351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836587140479148759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e77964dcbd348542919e59095c1120b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Audio.CachedAudioController
+  eventReference:
+    Guid:
+      Data1: -760618544
+      Data2: 1085497576
+      Data3: -299174779
+      Data4: -1830190547
+    Path: event:/Ghost/inhale
+  allowOverridePlay: 1
+  playOnAwake: 0
 --- !u!1 &8024050943924269512
 GameObject:
   m_ObjectHideFlags: 0
