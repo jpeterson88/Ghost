@@ -11,7 +11,7 @@ namespace Assets.Scripts.StateMachine.PlayerStateHandlers
     {
         [Header("References")]
         [SerializeField] private SpineSkeletonAnimationHandle animationHandler;
-        [SerializeField] private AnimationReferenceAsset dashLeftAnimation, dashRightAnimation;
+        [SerializeField] private AnimationReferenceAsset dashLeftAnimation, dashRightAnimation, dashUpAnimation, dashDownAnimation;
         [SerializeField] private CachedAudioController audioController;
         [SerializeField] private Rigidbody2D rb2d;
         [SerializeField] private FacingDirection facingDirectionController;
@@ -21,6 +21,7 @@ namespace Assets.Scripts.StateMachine.PlayerStateHandlers
         [Header("Dash Settings")]
         [SerializeField] private float dashSpeed = 14f;
         [SerializeField] private float dashDuration = 0.2f;
+        [SerializeField] private float minVelocityForDirection = 0.1f;
 
         private Vector2 dashDirection;
         private float dashTimer;
@@ -30,26 +31,54 @@ namespace Assets.Scripts.StateMachine.PlayerStateHandlers
         {
             base.OnEnter(state);
 
-            var facing = facingDirectionController.GetCurrentFacing();
-            dashDirection = facing == FacingDirectionEnum.Left ? Vector2.left : Vector2.right;
+            // Determine dash direction based on current velocity
+            Vector2 currentVelocity = rb2d.linearVelocity;
+            if (currentVelocity.magnitude >= minVelocityForDirection)
+            {
+                // Normalize the velocity to get the dash direction
+                dashDirection = currentVelocity.normalized;
+            }
+            else
+            {
+                // Use facing direction if not moving
+                var facing = facingDirectionController.GetCurrentFacing();
+                switch (facing)
+                {
+                    case FacingDirectionEnum.Left:
+                        dashDirection = Vector2.left;
+                        break;
+                    case FacingDirectionEnum.Right:
+                        dashDirection = Vector2.right;
+                        break;
+                }
+            }
 
-            var animation = facing == FacingDirectionEnum.Left
-                ? dashLeftAnimation
-                : dashRightAnimation;
+            PlayDirectionalAnimation();
 
-            animationHandler.PlayAnimationReference(animation, 1, false, true);
 
+            // Save the current damping and prepare for dash
             startDamping = rb2d.linearDamping;
-
-            // Prepare rigidbody for dash
             rb2d.linearVelocity = Vector2.zero;
             rb2d.linearDamping = 0f;
 
             dashTimer = dashDuration;
 
-            // Apply dash immediately
+            // Apply the dash velocity
             rb2d.linearVelocity = dashDirection * dashSpeed;
             audioController.PlayOneShot();
+        }
+
+        private void PlayDirectionalAnimation()
+        {
+            AnimationReferenceAsset animation = dashRightAnimation;
+            if (dashDirection == Vector2.left)
+                animation = dashLeftAnimation;
+            else if (dashDirection == Vector2.up)
+                animation = dashUpAnimation;
+            else if (dashDirection == Vector2.down)
+                animation = dashDownAnimation;
+
+            animationHandler.PlayAnimationReference(animation, 1, false, true);
         }
 
         internal override void OnFixedUpdate()
@@ -64,7 +93,6 @@ namespace Assets.Scripts.StateMachine.PlayerStateHandlers
             // Maintain constant dash velocity
             rb2d.linearVelocity = dashDirection * dashSpeed;
 
-            // Collision check
             var castResult = castUtility.Cast();
             if (castResult.collider != null)
             {
@@ -73,7 +101,6 @@ namespace Assets.Scripts.StateMachine.PlayerStateHandlers
                 return;
             }
 
-            // Dash finished
             if (dashTimer <= 0f)
             {
                 rb2d.linearVelocity = Vector2.zero;
@@ -85,6 +112,7 @@ namespace Assets.Scripts.StateMachine.PlayerStateHandlers
         {
             base.OnExit();
 
+            // Reset Values
             rb2d.linearDamping = startDamping;
             dashTimer = 0f;
         }

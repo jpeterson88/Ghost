@@ -10600,6 +10600,8 @@ MonoBehaviour:
   animationHandler: {fileID: 490000567640868241}
   dashLeftAnimation: {fileID: 11400000, guid: dfb3b88834a0f9147a1d542945fb5972, type: 2}
   dashRightAnimation: {fileID: 11400000, guid: dbed449e8f20eff4190ad818a2111d91, type: 2}
+  dashUpAnimation: {fileID: 11400000, guid: d0143ff46c4f2fb45843a146e51f7d98, type: 2}
+  dashDownAnimation: {fileID: 11400000, guid: 07de31838dc54084b9caf422be5763f5, type: 2}
   audioController: {fileID: 4347987297066311351}
   rb2d: {fileID: 5955428198235959819}
   facingDirectionController: {fileID: 2201487174393855563}
@@ -10608,6 +10610,7 @@ MonoBehaviour:
   castUtility: {fileID: 4327183385243375547}
   dashSpeed: 10
   dashDuration: 0.4
+  minVelocityForDirection: 0.1
 --- !u!1 &4937730337824063451
 GameObject:
   m_ObjectHideFlags: 0
