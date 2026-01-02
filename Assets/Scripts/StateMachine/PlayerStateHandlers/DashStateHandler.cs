@@ -2,6 +2,7 @@
 using Assets.Scripts.Input;
 using Assets.Scripts.StateMachine.Enums;
 using Assets.Scripts.Utility;
+using Assets.Scripts.Utility.DashInteractions;
 using Assets.Scripts.Utility.RayCasts;
 using Spine.Unity;
 using UnityEngine;
@@ -18,6 +19,7 @@ namespace Assets.Scripts.StateMachine.PlayerStateHandlers
         [SerializeField] private FacingDirection facingDirectionController;
         [SerializeField] private PlayerStates crashState, idleState;
         [SerializeField] private BoxCaster castUtility;
+        [SerializeField] private DashDetection dashDetection;
 
         [Header("Dash Settings")]
         [SerializeField] private float dashSpeed = 14f;
@@ -34,6 +36,7 @@ namespace Assets.Scripts.StateMachine.PlayerStateHandlers
         internal override void OnEnter(int state)
         {
             base.OnEnter(state);
+            dashDetection.EnableDetector();
 
             // Determine dash direction based on current velocity
             Vector2 currentVelocity = rb2d.linearVelocity;
@@ -120,6 +123,7 @@ namespace Assets.Scripts.StateMachine.PlayerStateHandlers
             base.OnExit();
 
             // Reset Values
+            dashDetection.DisableDetector();
             rb2d.linearDamping = startDamping;
             dashTimer = 0f;
         }
