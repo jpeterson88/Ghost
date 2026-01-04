@@ -152,10 +152,10 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/General.bank
   Name: General
   StudioPath: bank:/General
-  lastModified: 639030728196760938
+  lastModified: 639031268022154490
   FileSizes:
   - Name: Desktop
-    Value: 2047520
+    Value: 2090464
   Exists: 1
 --- !u!114 &-6906092397127869660
 MonoBehaviour:
@@ -172,7 +172,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639030728197051047
+  lastModified: 639031268022544632
   FileSizes:
   - Name: Desktop
     Value: 1516032
@@ -273,7 +273,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Character SFX.bank
   Name: Character SFX
   StudioPath: bank:/Character SFX
-  lastModified: 639030728196430870
+  lastModified: 639031268020083701
   FileSizes:
   - Name: Desktop
     Value: 790656
@@ -374,10 +374,10 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639030728196810952
+  lastModified: 639031268022204528
   FileSizes:
   - Name: Desktop
-    Value: 2124
+    Value: 2210
   Exists: 1
 --- !u!114 &-548577555255307819
 MonoBehaviour:
@@ -471,13 +471,42 @@ MonoBehaviour:
   - {fileID: -3689397091607500548}
   - {fileID: 7178888685843035108}
   - {fileID: -9107863422796432303}
+  - {fileID: 188647094006665045}
+  - {fileID: 2140368694939915856}
   EditorParameters: []
   MasterBanks:
   - {fileID: 2625838092753379136}
   StringsBanks:
   - {fileID: -1758736953036213874}
-  cacheTime: 639030728197051047
+  cacheTime: 639031268022544632
   cacheVersion: 131634
+--- !u!114 &188647094006665045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/General Sfx/flag-flap-2
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/General Sfx/flag-flap-2
+  Guid:
+    Data1: -1604861688
+    Data2: 1154881715
+    Data3: 1726311049
+    Data4: -1310182141
+  Banks:
+  - {fileID: -6910220195294961778}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1076
 --- !u!114 &1666999791229151387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,6 +561,33 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 5000
+--- !u!114 &2140368694939915856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/General Sfx/flag-flap-1
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/General Sfx/flag-flap-1
+  Guid:
+    Data1: 541045656
+    Data2: 1177521319
+    Data3: -1436631617
+    Data4: -297354887
+  Banks:
+  - {fileID: -6910220195294961778}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1000
 --- !u!114 &2625838092753379136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,7 +603,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639030728196800949
+  lastModified: 639031268022194520
   FileSizes:
   - Name: Desktop
     Value: 2704
