@@ -5,6 +5,9 @@ using Assets.Scripts.Utility;
 using Assets.Scripts.Utility.DashInteractions;
 using Assets.Scripts.Utility.RayCasts;
 using Spine.Unity;
+using System;
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.StateMachine.PlayerStateHandlers
@@ -22,12 +25,17 @@ namespace Assets.Scripts.StateMachine.PlayerStateHandlers
         [SerializeField] private DashDetection dashDetection;
 
         [Header("Dash Settings")]
+        [SerializeField] private float minAudioPitch;
+        [SerializeField] private float maxAudioPitch;
         [SerializeField] private float dashSpeed = 14f;
         [SerializeField] private float dashDuration = 0.2f;
         [SerializeField] private float minVelocityForDirection = 0.1f;
+        [SerializeField] private float cooldownDuration = 1f;
 
         private Vector2 dashDirection;
         private float dashTimer;
+        private float cooldownTimer;
+
         private float startDamping;
         private IInput input;
 
@@ -73,6 +81,7 @@ namespace Assets.Scripts.StateMachine.PlayerStateHandlers
 
             // Apply the dash velocity
             rb2d.linearVelocity = dashDirection * dashSpeed;
+            audioController.SetParam("Pitch", UnityEngine.Random.Range(minAudioPitch, maxAudioPitch));
             audioController.PlayOneShot();
         }
 
@@ -118,6 +127,17 @@ namespace Assets.Scripts.StateMachine.PlayerStateHandlers
             }
         }
 
+        private void Update()
+        {
+            if (!IsInCurrentHandlerState() && cooldownTimer <= cooldownDuration)
+                cooldownTimer += Time.deltaTime;
+        }
+
+        public bool CanDash() => cooldownTimer > cooldownDuration;
+
+        [SerializeField] private float blendingDuration = 0.3f; // Duration of the blending phase
+        [SerializeField] private float normalMoveSpeed = 5f;    // Normal movement speed of the character
+
         internal override void OnExit()
         {
             base.OnExit();
@@ -126,6 +146,30 @@ namespace Assets.Scripts.StateMachine.PlayerStateHandlers
             dashDetection.DisableDetector();
             rb2d.linearDamping = startDamping;
             dashTimer = 0f;
+            cooldownTimer = 0f;
+
+            // Start the speed blending phase
+            StartCoroutine(BlendToNormalSpeed());
+        }
+
+        private IEnumerator BlendToNormalSpeed()
+        {
+            float elapsedTime = 0f;
+            Vector2 initialVelocity = rb2d.linearVelocity;
+
+            while (elapsedTime < blendingDuration)
+            {
+                elapsedTime += Time.deltaTime;
+                float t = elapsedTime / blendingDuration;
+
+                // Interpolate the velocity from the dash speed to the normal movement speed
+                rb2d.linearVelocity = Vector2.Lerp(initialVelocity, dashDirection * normalMoveSpeed, t);
+
+                yield return null;
+            }
+
+            // Ensure the velocity is set to the normal movement speed at the end
+            rb2d.linearVelocity = dashDirection * normalMoveSpeed;
         }
     }
 }

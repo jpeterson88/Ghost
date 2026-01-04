@@ -1,5 +1,33 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9107863422796432303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/General Sfx/short-gust
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/General Sfx/short-gust
+  Guid:
+    Data1: -1202339197
+    Data2: 1249286768
+    Data3: 334711429
+    Data4: -1500395329
+  Banks:
+  - {fileID: -4896890727854552552}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 5561892207979360821}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1327
 --- !u!114 &-8989092726821698858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +152,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/General.bank
   Name: General
   StudioPath: bank:/General
-  lastModified: 639029489472719582
+  lastModified: 639030728196760938
   FileSizes:
   - Name: Desktop
     Value: 2047520
@@ -144,7 +172,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639029489473139676
+  lastModified: 639030728197051047
   FileSizes:
   - Name: Desktop
     Value: 1516032
@@ -245,10 +273,10 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Character SFX.bank
   Name: Character SFX
   StudioPath: bank:/Character SFX
-  lastModified: 639029489472029726
+  lastModified: 639030728196430870
   FileSizes:
   - Name: Desktop
-    Value: 771936
+    Value: 790656
   Exists: 1
 --- !u!114 &-3882742410177109216
 MonoBehaviour:
@@ -346,10 +374,10 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639029489472779598
+  lastModified: 639030728196810952
   FileSizes:
   - Name: Desktop
-    Value: 2036
+    Value: 2124
   Exists: 1
 --- !u!114 &-548577555255307819
 MonoBehaviour:
@@ -442,12 +470,13 @@ MonoBehaviour:
   - {fileID: -5238213069802418577}
   - {fileID: -3689397091607500548}
   - {fileID: 7178888685843035108}
+  - {fileID: -9107863422796432303}
   EditorParameters: []
   MasterBanks:
   - {fileID: 2625838092753379136}
   StringsBanks:
   - {fileID: -1758736953036213874}
-  cacheTime: 639029489473139676
+  cacheTime: 639030728197051047
   cacheVersion: 131634
 --- !u!114 &1666999791229151387
 MonoBehaviour:
@@ -518,7 +547,7 @@ MonoBehaviour:
   Path: ../../Audio/Ghost/ghost/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639029489472769597
+  lastModified: 639030728196800949
   FileSizes:
   - Name: Desktop
     Value: 2704
@@ -604,6 +633,30 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 14800
+--- !u!114 &5561892207979360821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/short-gust/Pitch
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Pitch
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4236058118
+    data2: 254803077
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &6453247447897130571
 MonoBehaviour:
   m_ObjectHideFlags: 0

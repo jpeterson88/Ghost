@@ -3,6 +3,7 @@ using Assets.Scripts.Ghost;
 using Assets.Scripts.Input;
 using Assets.Scripts.StateMachine;
 using Assets.Scripts.StateMachine.Enums;
+using Assets.Scripts.StateMachine.PlayerStateHandlers;
 using Assets.Scripts.Utility;
 using Spine;
 using Spine.Unity;
@@ -21,6 +22,7 @@ namespace Assets.Scripts.State.StateHandlers
         [SerializeField] private UncachedAudioController audioController;
         [SerializeField] private CastCurseController curseController;
         [SerializeField] private GhostMovement movementController;
+        [SerializeField] private DashStateHandler dashStateHandler;
         [SerializeField] private float stopMagnitude = 1.5f;
 
         private TrackEntry currentIdleTrack;
@@ -37,7 +39,7 @@ namespace Assets.Scripts.State.StateHandlers
 
         private void HandleDashPressed()
         {
-            if (IsInCurrentHandlerState())
+            if (IsInCurrentHandlerState() && dashStateHandler.CanDash())
                 SetState(dashState);
         }
 

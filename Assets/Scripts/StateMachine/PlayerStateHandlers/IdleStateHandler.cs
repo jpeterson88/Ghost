@@ -2,6 +2,7 @@
 using Assets.Scripts.Input;
 using Assets.Scripts.StateMachine;
 using Assets.Scripts.StateMachine.Enums;
+using Assets.Scripts.StateMachine.PlayerStateHandlers;
 using Assets.Scripts.Utility;
 using Spine.Unity;
 using System;
@@ -17,6 +18,7 @@ namespace Assets.Scripts.State.StateHandlers
         [SerializeField] private FacingDirection facingDirection;
         [SerializeField] private CastCurseController curseController;
         [SerializeField] private GhostMovement movementController;
+        [SerializeField] private DashStateHandler dashStateHandler;
 
         private IInput input;
 
@@ -30,7 +32,7 @@ namespace Assets.Scripts.State.StateHandlers
 
         private void HandleDashPressed()
         {
-            if (IsInCurrentHandlerState())
+            if (IsInCurrentHandlerState() && dashStateHandler.CanDash())
                 SetState(dashState);
         }
 
