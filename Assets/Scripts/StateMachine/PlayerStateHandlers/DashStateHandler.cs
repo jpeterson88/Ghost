@@ -148,28 +148,28 @@ namespace Assets.Scripts.StateMachine.PlayerStateHandlers
             dashTimer = 0f;
             cooldownTimer = 0f;
 
-            // Start the speed blending phase
-            StartCoroutine(BlendToNormalSpeed());
+            //// Start the speed blending phase
+            //StartCoroutine(BlendToNormalSpeed());
         }
 
-        private IEnumerator BlendToNormalSpeed()
-        {
-            float elapsedTime = 0f;
-            Vector2 initialVelocity = rb2d.linearVelocity;
+        //private IEnumerator BlendToNormalSpeed()
+        //{
+        //    float elapsedTime = 0f;
+        //    Vector2 initialVelocity = rb2d.linearVelocity;
 
-            while (elapsedTime < blendingDuration)
-            {
-                elapsedTime += Time.deltaTime;
-                float t = elapsedTime / blendingDuration;
+        //    while (elapsedTime < blendingDuration)
+        //    {
+        //        elapsedTime += Time.deltaTime;
+        //        float t = elapsedTime / blendingDuration;
 
-                // Interpolate the velocity from the dash speed to the normal movement speed
-                rb2d.linearVelocity = Vector2.Lerp(initialVelocity, dashDirection * normalMoveSpeed, t);
+        //        // Interpolate the velocity from the dash speed to the normal movement speed
+        //        rb2d.linearVelocity = Vector2.Lerp(initialVelocity, dashDirection * normalMoveSpeed, t);
 
-                yield return null;
-            }
+        //        yield return null;
+        //    }
 
-            // Ensure the velocity is set to the normal movement speed at the end
-            rb2d.linearVelocity = dashDirection * normalMoveSpeed;
-        }
+        //    // Ensure the velocity is set to the normal movement speed at the end
+        //    rb2d.linearVelocity = dashDirection * normalMoveSpeed;
+        //}
     }
 }

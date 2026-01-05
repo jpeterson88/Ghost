@@ -10381,9 +10381,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4620043232829818379}
   - component: {fileID: 478659708130716684}
-  - component: {fileID: 4465273479311423637}
+  - component: {fileID: 608853573744195893}
   m_Layer: 9
-  m_Name: Detector
+  m_Name: Dash Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10398,7 +10398,7 @@ Transform:
   m_GameObject: {fileID: 4570439525024200106}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10417,9 +10417,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Utility.DashInteractions.DashDetection
   rb2d: {fileID: 5955428198235959819}
-  collider2D: {fileID: 4465273479311423637}
---- !u!58 &4465273479311423637
-CircleCollider2D:
+  collider2D: {fileID: 608853573744195893}
+--- !u!70 &608853573744195893
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -10452,8 +10452,9 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: 0.03, y: 0}
+  m_Size: {x: 1.5, y: 1.1}
+  m_Direction: 1
 --- !u!1 &4585130281145595182
 GameObject:
   m_ObjectHideFlags: 0
@@ -10697,7 +10698,7 @@ MonoBehaviour:
   minAudioPitch: 0.44
   maxAudioPitch: 0.48
   dashSpeed: 8
-  dashDuration: 0.7
+  dashDuration: 0.58
   minVelocityForDirection: 0.1
   cooldownDuration: 1
   blendingDuration: 5
