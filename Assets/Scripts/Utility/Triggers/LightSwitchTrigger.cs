@@ -11,12 +11,14 @@ namespace Assets.Scripts.Utility.Triggers
 
         [SerializeField] private ActionLightEnumScriptable triggerLight;
         [SerializeField] private LightSourceEnum lightSourceEnum;
+        [SerializeField] private bool debugOn;
 
         private bool isInTrigger;
         private void OnTriggerEnter2D(Collider2D collision)
         {
             isInTrigger = true;
-            Debug.Log("Ghost enter");
+            if(debugOn)
+                Debug.Log("Ghost enter");
         }
 
         //private void Update()
@@ -28,7 +30,8 @@ namespace Assets.Scripts.Utility.Triggers
         private void OnTriggerExit2D(Collider2D collision)
         {
             isInTrigger = false;
-            Debug.Log("Ghost exit");
+            if (debugOn)
+                Debug.Log("Ghost exit");
         }
     }
 }

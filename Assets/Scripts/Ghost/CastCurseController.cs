@@ -11,6 +11,7 @@ namespace Assets.Scripts.Ghost
         [SerializeField] private CircularPathSpawner curseSpawner;
         [SerializeField] private ActionCurseEnumScriptable actionCurseEnumScriptable;
         [SerializeField] private float delayToNotifyCurseSuccess = 1f;
+        [SerializeField] private bool isDebugOn;
 
         private bool isOnCooldown;
         private float currentCooldownTime;
@@ -50,7 +51,9 @@ namespace Assets.Scripts.Ghost
         private System.Collections.IEnumerator DelayedCurseNotification()
         {
             yield return new WaitForSeconds(delayToNotifyCurseSuccess);
-            Debug.Log(($"Trigger successful curse: ${targetCurseType}"));
+            if(isDebugOn)
+                Debug.Log(($"Trigger successful curse: ${targetCurseType}"));
+
             actionCurseEnumScriptable.Invoke(targetCurseType);
         }
 
@@ -59,7 +62,9 @@ namespace Assets.Scripts.Ghost
             // Parent must have ICursedObject
             targetCurseType = collision.gameObject.GetComponentInParent<CursedBase>().objectCurseType;
             targetTransform = collision.transform;
-            Debug.Log(($"Set targetCurseType to: ${targetCurseType}"));
+
+            if (isDebugOn)
+                Debug.Log(($"Set targetCurseType to: ${targetCurseType}"));
         }
 
         private void OnTriggerExit2D(Collider2D collision)

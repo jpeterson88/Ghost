@@ -3,11 +3,7 @@ using Assets.Scripts.Input;
 using Assets.Scripts.StateMachine.Enums;
 using Assets.Scripts.Utility;
 using Assets.Scripts.Utility.DashInteractions;
-using Assets.Scripts.Utility.RayCasts;
 using Spine.Unity;
-using System;
-using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.StateMachine.PlayerStateHandlers
@@ -21,7 +17,6 @@ namespace Assets.Scripts.StateMachine.PlayerStateHandlers
         [SerializeField] private Rigidbody2D rb2d;
         [SerializeField] private FacingDirection facingDirectionController;
         [SerializeField] private PlayerStates crashState, idleState;
-        [SerializeField] private BoxCaster castUtility;
         [SerializeField] private DashDetection dashDetection;
 
         [Header("Dash Settings")]
@@ -31,6 +26,7 @@ namespace Assets.Scripts.StateMachine.PlayerStateHandlers
         [SerializeField] private float dashDuration = 0.2f;
         [SerializeField] private float minVelocityForDirection = 0.1f;
         [SerializeField] private float cooldownDuration = 1f;
+        [SerializeField] private bool isDebugOn;
 
         private Vector2 dashDirection;
         private float dashTimer;
@@ -52,7 +48,9 @@ namespace Assets.Scripts.StateMachine.PlayerStateHandlers
             {
                 // Normalize the velocity to get the dash direction
                 dashDirection = input.GetMoveVector().normalized;
-                Debug.Log($"Dash Vector {input.GetMoveVector().normalized}");
+
+                if(isDebugOn)
+                    Debug.Log($"Dash Vector {input.GetMoveVector().normalized}");
             }
             else
             {
@@ -112,16 +110,22 @@ namespace Assets.Scripts.StateMachine.PlayerStateHandlers
             // Maintain constant dash velocity
             rb2d.linearVelocity = dashDirection * dashSpeed;
 
-            var castResult = castUtility.Cast();
-            if (castResult.collider != null)
+            if (dashDetection.IsColliding())
             {
                 rb2d.linearVelocity = Vector2.zero;
+
+                if (isDebugOn)
+                    Debug.Log("Crash");
+
                 SetState(crashState);
                 return;
             }
 
             if (dashTimer <= 0f)
             {
+                if(isDebugOn)
+                    Debug.Log("Dash Timer Reached 0");
+
                 rb2d.linearVelocity = Vector2.zero;
                 SetState(idleState);
             }
@@ -135,41 +139,15 @@ namespace Assets.Scripts.StateMachine.PlayerStateHandlers
 
         public bool CanDash() => cooldownTimer > cooldownDuration;
 
-        [SerializeField] private float blendingDuration = 0.3f; // Duration of the blending phase
-        [SerializeField] private float normalMoveSpeed = 5f;    // Normal movement speed of the character
 
         internal override void OnExit()
         {
             base.OnExit();
 
-            // Reset Values
             dashDetection.DisableDetector();
             rb2d.linearDamping = startDamping;
             dashTimer = 0f;
             cooldownTimer = 0f;
-
-            //// Start the speed blending phase
-            //StartCoroutine(BlendToNormalSpeed());
         }
-
-        //private IEnumerator BlendToNormalSpeed()
-        //{
-        //    float elapsedTime = 0f;
-        //    Vector2 initialVelocity = rb2d.linearVelocity;
-
-        //    while (elapsedTime < blendingDuration)
-        //    {
-        //        elapsedTime += Time.deltaTime;
-        //        float t = elapsedTime / blendingDuration;
-
-        //        // Interpolate the velocity from the dash speed to the normal movement speed
-        //        rb2d.linearVelocity = Vector2.Lerp(initialVelocity, dashDirection * normalMoveSpeed, t);
-
-        //        yield return null;
-        //    }
-
-        //    // Ensure the velocity is set to the normal movement speed at the end
-        //    rb2d.linearVelocity = dashDirection * normalMoveSpeed;
-        //}
     }
 }

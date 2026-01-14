@@ -7,5 +7,6 @@
         Spook1 = 2,
         CastCurse = 3,
         Dash= 4,
+        Crash= 5,
     }
 }
