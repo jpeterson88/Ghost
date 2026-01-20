@@ -24,8 +24,26 @@ MonoBehaviour:
     multiplyMaterials: []
     screenMaterials: []
   skeletonDataModifiers: []
-  fromAnimation: []
-  toAnimation: []
-  duration: []
+  fromAnimation:
+  - fly-left
+  - fly-up
+  - fly-down
+  - fly-right
+  - fly-up
+  - fly-down
+  toAnimation:
+  - bump-left
+  - bump-left
+  - bump-left
+  - bump-right
+  - bump-right
+  - bump-right
+  duration:
+  - 0.2
+  - 0.2
+  - 0.2
+  - 0.2
+  - 0.2
+  - 0.2
   defaultMix: 0.42
   controller: {fileID: 0}

@@ -10381,7 +10381,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4620043232829818379}
   - component: {fileID: 478659708130716684}
-  - component: {fileID: 608853573744195893}
+  - component: {fileID: 2476088376088494654}
   m_Layer: 9
   m_Name: Dash Detector
   m_TagString: Untagged
@@ -10398,7 +10398,7 @@ Transform:
   m_GameObject: {fileID: 4570439525024200106}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.27, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10417,16 +10417,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Utility.DashInteractions.DashDetection
   rb2d: {fileID: 5955428198235959819}
-  dashCollider: {fileID: 608853573744195893}
+  dashCollider: {fileID: 2476088376088494654}
   collideTagName: DashCollide
---- !u!70 &608853573744195893
+--- !u!70 &2476088376088494654
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4570439525024200106}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -10453,9 +10453,9 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.03, y: 0}
-  m_Size: {x: 1.5, y: 1.1}
-  m_Direction: 1
+  m_Offset: {x: 0.04, y: 0.29}
+  m_Size: {x: 1.02, y: 1.05}
+  m_Direction: 0
 --- !u!1 &4585130281145595182
 GameObject:
   m_ObjectHideFlags: 0
@@ -11838,8 +11838,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.04, y: 0.27}
-  m_Size: {x: 1.34, y: 0.98}
+  m_Offset: {x: 0.04, y: 0.3}
+  m_Size: {x: 1, y: 0.98}
   m_Direction: 1
 --- !u!114 &735823437317391784
 MonoBehaviour:
@@ -11977,6 +11977,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.StateMachine.PlayerStateHandlers.CrashStateHandler
   canHandleStates: 05000000
   animationHandler: {fileID: 490000567640868241}
-  crashAnimation: {fileID: 11400000, guid: 080b80b78f02ed149a518b02a475c183, type: 2}
+  directionController: {fileID: 2201487174393855563}
+  bumpLeft: {fileID: 11400000, guid: 1148b88181ee6e9409a23f51a0718124, type: 2}
+  bumpRight: {fileID: 11400000, guid: 8b1b8e29d83e3894db917d1d18637f88, type: 2}
   nextState: 0
-  stunTime: 0.5
+  stunTime: 0.3
+  animTrackSpeed: 2
